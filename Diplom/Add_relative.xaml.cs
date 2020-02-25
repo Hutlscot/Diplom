@@ -16,14 +16,15 @@ using System.Windows.Shapes;
 namespace Diplom
 {
     /// <summary>
-    /// Interaction logic for Add_person.xaml
+    /// Interaction logic for Add_relative.xaml
     /// </summary>
-    public partial class Add_person : Page
+    public partial class Add_relative : Page
     {
-        public Add_person()
+        public Add_relative()
         {
             InitializeComponent();
         }
+
         private void txt_phone_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !(Char.IsDigit(e.Text, 0));
@@ -52,33 +53,6 @@ namespace Diplom
                 txt_phone.Text += '-';
             }
             txt_phone.SelectionStart = txt_phone.Text.Length;
-        }
-        private void txt_series_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !(Char.IsDigit(e.Text, 0));
-            if (txt_series.Text.Length == 2)
-            {
-                txt_series.Text += ' ';
-            }
-            txt_series.SelectionStart = txt_series.Text.Length;
-        }
-        private void txt_division_code_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !(Char.IsDigit(e.Text, 0));
-            if (txt_division_code.Text.Length == 3)
-            {
-                txt_division_code.Text += '-';
-            }
-            txt_division_code.SelectionStart = txt_division_code.Text.Length;
-        }
-        private void txt_number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !(Char.IsDigit(e.Text, 0));
-        }
-
-        private void btm_next_Click(object sender, RoutedEventArgs e)
-        { 
-            Transfer.Trans("Добавить представителя");
         }
     }
 }

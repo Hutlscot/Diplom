@@ -32,37 +32,12 @@ namespace Diplom
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string name = (ListViewMenu.SelectedItem as SubItem).Name;
-            switch (name)
-            {
-                case "Добавить студента":
-                    Manager_frame.frame.Navigate(new Add_person());
-                    break;
-                case "Список студентов":
-                    Manager_frame.frame.Navigate(new List_students());
-                    break;
-            }
+            Transfer.Trans(name);
         }
-
-        private void ExpanderMenu_Expanded(object sender, RoutedEventArgs e)
+        private void ListViewItemMenu_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("sdfsdf");
-        }
-
-        private void ExpanderMenu_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            string name = (sender as Expander).Header as string;
-            switch (name)
-            {
-                case "Главная":
-                    Manager_frame.frame.Navigate(new Main_page());
-                    break;
-                case "Добавить студента":
-                    Manager_frame.frame.Navigate(new Add_person());
-                    break;
-                case "Список студентов":
-                    Manager_frame.frame.Navigate(new List_students());
-                    break;
-            }
+            ItemMenu name = (sender as TextBlock).DataContext as ItemMenu;
+            Transfer.Trans(name.Header);
         }
     }
 }

@@ -66,18 +66,18 @@
                     materialDesign:TextFieldAssist.HasClearButton="True">
                         </TextBox>
                         <TextBox
-                    MaxLength="5"
+                    MaxLength="7"
+                    PreviewTextInput="txt_home_phone_PreviewTextInput"
                     Name="txt_home_phone"
                     materialDesign:HintAssist.Hint="Домашний телефон"
                     materialDesign:TextFieldAssist.HasClearButton="True">
                         </TextBox>
                         <ComboBox
-                            Name="cmb_who"
-                            materialDesign:HintAssist.Hint="Кем являетесь">
-                            <ComboBoxItem >
+                            materialDesign:HintAssist.Hint="Кем является">
+                            <ComboBoxItem>
                                 Отец
                             </ComboBoxItem>
-                            <ComboBoxItem >
+                            <ComboBoxItem>
                                 Мать
                             </ComboBoxItem>
                             <ComboBoxItem>
@@ -118,8 +118,10 @@
                     materialDesign:TextFieldAssist.HasClearButton="True">
                         </TextBox>
                         <DatePicker
+                     
                     Name="Date_of_issue"
-                    materialDesign:HintAssist.Hint="Дата выдачи"/>
+                    materialDesign:HintAssist.Hint="Дата выдачи">
+                        </DatePicker>
                         <TextBox
                     MaxLength="7"
                     PreviewTextInput="txt_division_code_PreviewTextInput"

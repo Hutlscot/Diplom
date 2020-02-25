@@ -25,6 +25,8 @@ namespace Diplom
         public MainWindow()
         {
             InitializeComponent();
+            //настройка таймера для переходов по страницам
+            Transfer.Initialization();
 
             var menuRegister = new List<SubItem>();
             menuRegister.Add(new SubItem("Добавить студента"));
@@ -51,21 +53,31 @@ namespace Diplom
             Menu.Children.Add(new UserControlMenuItem(item1));
             Menu.Children.Add(new UserControlMenuItem(item2));
             //Menu.Children.Add(new UserControlMenuItem(item3));
-            frame.Navigate(new Add_person());
+            frame.Navigate(new Main_page());
             Manager_frame.frame = frame;
         }
 
-        private void btm_back_MouseDown(object sender, MouseButtonEventArgs e)
+
+        private void btm_back_Click(object sender, RoutedEventArgs e)
         {
             if (Manager_frame.frame.CanGoBack)
+
             {
+
                 Manager_frame.frame.GoBack();
+
             }
+
             else
+
             {
+
                 Authorization auth = new Authorization();
+
                 auth.Show();
+
                 Close();
+
             }
         }
     }

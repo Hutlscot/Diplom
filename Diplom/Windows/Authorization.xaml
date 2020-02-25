@@ -34,7 +34,7 @@
                 ToolTip="Нажмите для входа"
                 materialDesign:RippleAssist.Feedback="#DD000000">
                 <Button.Content>
-                    <TextBlock Margin="0,0,0,3">
+                    <TextBlock Margin="0,0,0,3" Foreground="{StaticResource Back}">
                         Войти
                     </TextBlock>
                 </Button.Content>

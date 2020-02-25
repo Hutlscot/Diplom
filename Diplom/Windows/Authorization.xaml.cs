@@ -22,7 +22,7 @@ namespace Diplom
     public partial class Authorization : Window
     {
         static int GoOver = 0;
-        DispatcherTimer timer = new DispatcherTimer();
+        static DispatcherTimer timer = new DispatcherTimer();
         public Authorization()
         {
             InitializeComponent();

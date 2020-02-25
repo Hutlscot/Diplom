@@ -23,11 +23,6 @@ namespace Diplom
         public Add_representative_and_pasport()
         {
             InitializeComponent();
-            //List<string> arr = new List<string>();
-            //arr.Add("Отец");
-            //arr.Add("Мать");
-            //arr.Add("Опекун");
-            //cmb_who.ItemsSource = arr;
         }
         private void txt_phone_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -81,8 +76,18 @@ namespace Diplom
             e.Handled = !(Char.IsDigit(e.Text, 0));
         }
         private void btm_next_Click(object sender, RoutedEventArgs e)
+        { 
+            Transfer.Trans("Добавить родственников");
+        }
+
+        private void txt_home_phone_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            //Manager_frame.frame.Navigate(new Add_representative_and_pasport());
+            e.Handled = !(Char.IsDigit(e.Text, 0));
+            if (txt_home_phone.Text.Length == 3)
+            {
+                txt_home_phone.Text += '-';
+            }
+            txt_home_phone.SelectionStart = txt_home_phone.Text.Length;
         }
     }
 }

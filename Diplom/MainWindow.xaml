@@ -7,6 +7,7 @@
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Diplom"
         mc:Ignorable="d"
+        Foreground="White"
          Title="Система регистрации студентов в общежитии ТТИТ" Height="550" Width="1000" WindowStartupLocation="CenterScreen" Background="{StaticResource Back}" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
@@ -17,7 +18,7 @@
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Panel.ZIndex="999" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Content="{Binding ElementName=frame, Path=Content.Title}"/>
+        <TextBlock Panel.ZIndex="999" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="{Binding ElementName=frame, Path=Content.Title}"/>
         <Frame Name="frame" NavigationUIVisibility="Hidden" Grid.Column="1" Grid.Row="1"></Frame>
         <!--<Border BorderBrush="Wheat" BorderThickness="0 0 0 2" >-->
         <materialDesign:ColorZone Mode="PrimaryMid" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
@@ -25,9 +26,9 @@
                 
                 <materialDesign:PopupBox Name="btm_back" PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right">
                     <materialDesign:PopupBox.ToggleContent>
-                        <Grid Panel.ZIndex="999999" MouseDown="btm_back_MouseDown">
-                            <materialDesign:PackIcon Margin="14" Kind="KeyboardBackspace"/>
-                        </Grid>
+                        <Button Style="{StaticResource MaterialDesignIconButton}"  Name="Btn_Back" Click="btm_back_Click">
+                            <materialDesign:PackIcon Foreground="White" Margin="14" Kind="KeyboardBackspace"/>
+                        </Button>
                     </materialDesign:PopupBox.ToggleContent>
                 </materialDesign:PopupBox>
             </Grid>

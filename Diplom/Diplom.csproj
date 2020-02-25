@@ -65,6 +65,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Add_relative.xaml.cs">
+      <DependentUpon>Add_relative.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Add_representative_and_pasport.xaml.cs">
       <DependentUpon>Add_representative_and_pasport.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Classes\SubItem.cs" />
+    <Compile Include="Classes\Transfer.cs" />
     <Compile Include="Type.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -115,6 +119,10 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Add_relative.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Add_representative_and_pasport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
