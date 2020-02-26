@@ -29,27 +29,10 @@ namespace Diplom
 
             this.DataContext = itemMenu;
         }
-        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //string name = (ListViewMenu.SelectedItem as SubItem).Name;
-            //Transfer.Trans(name);
-            MessageBox.Show("sdfsdf");
-        }
-        private void ListViewItemMenu_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            MessageBox.Show(lbl_header.Text);
-        }
-
-        private void ListViewItemMenu_Selected(object sender, RoutedEventArgs e)
-        {
-            //string name = (ListViewItemMenu.ContentTemplateSelector).ToString();
-
-            MessageBox.Show("sdfsdf");
-        }
-
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            MessageBox.Show("");
+            string name = (sender as TextBlock).Text;
+            Transfer.Trans(name);
         }
     }
 }

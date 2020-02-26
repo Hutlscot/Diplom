@@ -11,8 +11,8 @@
             <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="15" Height="15" Margin="10 16" Foreground="White"/>
             <Grid>
                 <ListBoxItem x:Name="ListViewItemMenu" Padding="0" FontSize="15" Foreground="White">
-                    <Grid Width="280" Height="46" MouseDown="ListViewItemMenu_MouseDown">
-                        <TextBlock Name="lbl_header" Padding="37 14" Text="{Binding Path=Header}">
+                    <Grid Width="280" Height="46">
+                        <TextBlock MouseDown="TextBlock_MouseDown" Padding="37 14" Text="{Binding Path=Header}">
                         </TextBlock>
                     </Grid>
                 </ListBoxItem>
@@ -21,7 +21,9 @@
                 <ListView  x:Name="ListViewMenu" ItemsSource="{Binding Path=SubItems}" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Path=Name}" Padding="20 5"/>
+                            <Grid Margin="-9" Width="270" >
+                                <TextBlock MouseDown="TextBlock_MouseDown" Height="46" Text="{Binding Path=Name}" Padding="20 13"/>
+                            </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
