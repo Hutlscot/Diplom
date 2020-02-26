@@ -9,12 +9,19 @@
     <Grid>
         <Grid>
             <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="15" Height="15" Margin="10 16" Foreground="White"/>
-            <ListBoxItem x:Name="ListViewItemMenu" Content="{Binding Path=Header}" Padding="37 14" FontSize="15" Foreground="White" />
+            <Grid>
+                <ListBoxItem x:Name="ListViewItemMenu" Padding="0" FontSize="15" Foreground="White">
+                    <Grid Width="280" Height="46" MouseDown="ListViewItemMenu_MouseDown">
+                        <TextBlock Name="lbl_header" Padding="37 14" Text="{Binding Path=Header}">
+                        </TextBlock>
+                    </Grid>
+                </ListBoxItem>
+            </Grid>
             <Expander x:Name="ExpanderMenu" Header="{Binding Path=Header}" Width="266" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
-                <ListView SelectionChanged="ListViewMenu_SelectionChanged" x:Name="ListViewMenu" ItemsSource="{Binding Path=SubItems}" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView  x:Name="ListViewMenu" ItemsSource="{Binding Path=SubItems}" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock  Text="{Binding Path=Name}" Padding="20 5"/>
+                            <TextBlock Text="{Binding Path=Name}" Padding="20 5"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
