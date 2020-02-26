@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +31,7 @@ namespace Diplom
             e.Handled = !(Char.IsDigit(e.Text, 0));
             Validation_phone();
         }
+        //маска для телефона
         private void Validation_phone()
         {
             if (txt_phone.Text.Length == 1)
@@ -79,6 +82,18 @@ namespace Diplom
         private void btm_next_Click(object sender, RoutedEventArgs e)
         { 
             Transfer.Trans("Добавить представителя");
+        }
+        //метод для загрузки фото
+        private void btm_load_photo_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "PNG Фото (*.png)|*.png|JPG Фото (*.jpg)|*.jpg|JPEG Фото (*.jpeg)|*.jpeg";
+            if(openFile.ShowDialog()==true)
+            {
+                string directory = openFile.FileName;
+                byte[] img = File.ReadAllBytes(directory);
+            }
+
         }
     }
 }
