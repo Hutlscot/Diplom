@@ -86,14 +86,31 @@ namespace Diplom
         //метод для загрузки фото
         private void btm_load_photo_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "PNG Фото (*.png)|*.png|JPG Фото (*.jpg)|*.jpg|JPEG Фото (*.jpeg)|*.jpeg";
-            if(openFile.ShowDialog()==true)
+            //OpenFileDialog openFile = new OpenFileDialog();
+            //openFile.Filter = "PNG Фото (*.png)|*.png|JPG Фото (*.jpg)|*.jpg|JPEG Фото (*.jpeg)|*.jpeg";
+            //if (openFile.ShowDialog() == true)
+            //{
+            //    string directory = openFile.FileName;
+            //    byte[] img = File.ReadAllBytes(directory);
+            //}
+            IsValidation();
+        }
+        private void IsValidation()
+        {
+            if (Val.Val_txt(txt_surname) || Val.Val_txt(txt_name) || Val.Val_txt(txt_patronymic) ||
+                Val.Val_txt(txt_phone) || Val.Val_txt(txt_group) || Val.Val_txt(txt_series) ||
+                Val.Val_txt(txt_number) || Val.Val_txt(txt_who_gave) || Val.Val_txt(txt_address) ||
+                Val.Val_txt(txt_division_code) || Date_of_birth.SelectedDate == null || Date_of_issue.SelectedDate == null)
             {
-                string directory = openFile.FileName;
-                byte[] img = File.ReadAllBytes(directory);
+                MessageBox.Show("заполните все данные");
+                return;
             }
-
+            if(Val.Val_Phone(txt_phone))
+            {
+                MessageBox.Show("не верный формат телефона");
+                return;
+            }
+            MessageBox.Show("все нормас");
         }
     }
 }
