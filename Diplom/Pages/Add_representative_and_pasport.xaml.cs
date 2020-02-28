@@ -77,7 +77,7 @@ namespace Diplom
         }
         private void btm_next_Click(object sender, RoutedEventArgs e)
         {
-            Dialog_message.MessageProgress("Сохраняю");
+            Dialog_message.MessageOK("Сохранено");
             Transfer.Trans("Добавить родственников");
         }
 

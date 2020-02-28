@@ -13,6 +13,7 @@ namespace Diplom
         {
             if(string.IsNullOrEmpty(txt.Text))
             {
+                Dialog_message.MessageER("Заполните все поля");
                 return true;
             }
             return false;
@@ -28,38 +29,42 @@ namespace Diplom
         //проверка номера телефона
         public static bool Val_Phone(TextBox txt)
         {
-            if (txt.Text.Length ==17)
+            if (txt.Text.Length !=17)
             {
-                return false;
+                Dialog_message.MessageER("Неверный телефон");
+                return true;
             }
-            return true;
+            return false;
         }
         //проверка серии паспорта
         public static bool Val_series(TextBox txt)
         {
-            if(txt.Text.Length==5)
+            if(txt.Text.Length!=5)
             {
-                return false;
+                Dialog_message.MessageER("Неверная серия");
+                return true;
             }
-            return true;
+            return false;
         }
         //проверка номера паспорта
         public static bool Val_number(TextBox txt)
         {
-            if(txt.Text.Length==6)
+            if(txt.Text.Length!=6)
             {
-                return false;
+                Dialog_message.MessageER("Неверный номер");
+                return true;
             }
-            return true;
+            return false;
         }
         //проверка кода подразделения
         public static bool Val_code(TextBox txt)
         {
-            if(txt.Text.Length==7)
+            if(txt.Text.Length!=7)
             {
-                return false;
+                Dialog_message.MessageER("Неверный код");
+                return true;
             }
-            return true;
+            return false;
         }
     }
 }

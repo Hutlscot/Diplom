@@ -20,15 +20,10 @@ namespace Diplom
     /// </summary>
     public partial class Add_relative : Page
     {
-        List<Person> people = new List<Person>();
-        Relative rel = new Relative { Degree = "Папочка", Address = "Семилужки" };
-        Person per = new Person { Name = "Руслан", LastName = "Камалов", MiddleName = "Владиславович", Phone = "89539216579"};
+
         public Add_relative()
-        {
-            per.Relative = rel;
-            people.Add(per);
+        { 
             InitializeComponent();
-            list.ItemsSource = people;
         }
         private void txt_phone_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -58,6 +53,34 @@ namespace Diplom
                 txt_phone.Text += '-';
             }
             txt_phone.SelectionStart = txt_phone.Text.Length;
+        }
+
+        private void btm_cancel_Click(object sender, RoutedEventArgs e)
+        {
+            add_window.IsOpen = false;
+        }
+
+        private void btm_add_Click(object sender, RoutedEventArgs e)
+        {
+            if (Validation())
+            {
+                add_window.IsOpen = false;
+            }
+        }
+        private bool Validation()
+        {
+            if (Val.Val_txt(txt_surname) || Val.Val_txt(txt_name) || Val.Val_txt(txt_patronymic) || Val.Val_txt(txt_phone) ||
+                Val.Val_txt(txt_degree) || Val.Val_txt(txt_address))
+            {
+                MessageBox.Show("Заполните все поля");
+                return false;
+            }
+            if (Val.Val_Phone(txt_phone))
+            {
+                return false;
+            }
+            MessageBox.Show("Сохранено");
+            return true;
         }
     }
 }

@@ -25,7 +25,7 @@
             </Button>
             <materialDesign:PackIcon Kind="WarningCircle" HorizontalAlignment="Center" Foreground="{StaticResource ValidationErrorBrush}" Width="60" Height="60" Margin="0 -5 0 20"/>
             <Grid  Background="White" Width="200" Height="90">
-                <TextBlock Name="text_message" Margin="0 -13 0 0" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{StaticResource MaterialDesignHeadline5TextBlock}">Ошибка</TextBlock>
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center" Name="text_message" Margin="0 -13 0 0" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{StaticResource MaterialDesignHeadline5TextBlock}">Ошибка</TextBlock>
             </Grid>
         </StackPanel>
     </Grid>

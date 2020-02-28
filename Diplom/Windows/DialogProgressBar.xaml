@@ -11,7 +11,7 @@
         <StackPanel>
             <ProgressBar IsIndeterminate="True" Style="{StaticResource MaterialDesignCircularProgressBar}" HorizontalAlignment="Center" Foreground="{StaticResource SecondaryAccentBrush}" Width="50" Height="50" Margin="40"/>
             <Grid Background="White" Width="200" Height="70">
-                <TextBlock Name="text_message" Margin="0 -9 0 0" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{StaticResource MaterialDesignHeadline5TextBlock}">Сохраняю</TextBlock>
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center" Name="text_message" Margin="0 -9 0 0" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{StaticResource MaterialDesignHeadline5TextBlock}">Сохраняю</TextBlock>
             </Grid>
         </StackPanel>
     </Grid>
