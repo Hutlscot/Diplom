@@ -65,13 +65,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DialogProgressBar.xaml.cs">
+      <DependentUpon>DialogProgressBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\DialogERR.xaml.cs">
       <DependentUpon>DialogERR.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\DialogOK.xaml.cs">
       <DependentUpon>DialogOK.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialog_message.cs" />
+    <Compile Include="Classes\Dialog_message.cs" />
     <Compile Include="Pages\Add_relative.xaml.cs">
       <DependentUpon>Add_relative.xaml</DependentUpon>
     </Compile>
@@ -97,7 +100,7 @@
     <Compile Include="Pages\Main_page.xaml.cs">
       <DependentUpon>Main_page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Partial.cs" />
+    <Compile Include="Classes\Relative_fio.cs" />
     <Compile Include="Pasport.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -127,6 +130,10 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="DialogProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\DialogERR.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,7 +181,7 @@
     <Compile Include="Pages\UserControlMenuItem.xaml.cs">
       <DependentUpon>UserControlMenuItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Validation.cs" />
+    <Compile Include="Classes\Validation.cs" />
     <Compile Include="Windows\Authorization.xaml.cs">
       <DependentUpon>Authorization.xaml</DependentUpon>
     </Compile>

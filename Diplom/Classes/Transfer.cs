@@ -11,18 +11,22 @@ namespace Diplom
     public static class Transfer
     {
         static int GoOver = 0;
+        //таймер для анимации
         static DispatcherTimer timer = new DispatcherTimer();
+        //название страницы
         static public string name_page;
         static public void Initialization()
         {
             timer.Tick += new EventHandler(TimerStart);
             timer.Interval = new TimeSpan(0, 0, 0, 0, 500);
         }
+        //метод для перехода
         public static void Trans(string name)
         {
             name_page = name;
             timer.Start();
         }
+        //метод в таймере
         static private void TimerStart(object sender, EventArgs e)
         {
             GoOver++;
@@ -49,6 +53,7 @@ namespace Diplom
             }
             TimerStop();
         }
+        //остановка таймера
         static private void TimerStop()
         {
             timer.Stop();

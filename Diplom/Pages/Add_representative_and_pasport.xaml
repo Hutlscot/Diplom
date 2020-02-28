@@ -129,7 +129,7 @@
                     materialDesign:HintAssist.Hint="Код подразделения"
                     materialDesign:TextFieldAssist.HasClearButton="True">
                         </TextBox>
-                        <Button Tag="98" Margin="25" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                        <Button Tag="98" Margin="25"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="150"
                                 Name="btm_next"

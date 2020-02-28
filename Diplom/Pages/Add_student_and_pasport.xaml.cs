@@ -82,20 +82,19 @@ namespace Diplom
 
         private void btm_next_Click(object sender, RoutedEventArgs e)
         {
+            Dialog_message.MessageProgress("Сохраняю");
             Transfer.Trans("Добавить представителя");
         }
         //метод для загрузки фото
         private void btm_load_photo_Click(object sender, RoutedEventArgs e)
         {
-            //OpenFileDialog openFile = new OpenFileDialog();
-            //openFile.Filter = "PNG Фото (*.png)|*.png|JPG Фото (*.jpg)|*.jpg|JPEG Фото (*.jpeg)|*.jpeg";
-            //if (openFile.ShowDialog() == true)
-            //{
-            //    string directory = openFile.FileName;
-            //    byte[] img = File.ReadAllBytes(directory);
-            //}
-            //IsValidation();
-            Dialog_message.MessageER();
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "PNG Фото (*.png)|*.png|JPG Фото (*.jpg)|*.jpg|JPEG Фото (*.jpeg)|*.jpeg";
+            if (openFile.ShowDialog() == true)
+            {
+                string directory = openFile.FileName;
+                byte[] img = File.ReadAllBytes(directory);
+            }
         }
         private void IsValidation()
         {

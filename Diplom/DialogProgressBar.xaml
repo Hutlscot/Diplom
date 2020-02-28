@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Diplom.DialogProgressBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Diplom"
+             mc:Ignorable="d" 
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="200" d:DesignWidth="200">
+    <Grid Background="{StaticResource PrimaryHueDarkBrush}">
+        <StackPanel>
+            <ProgressBar IsIndeterminate="True" Style="{StaticResource MaterialDesignCircularProgressBar}" HorizontalAlignment="Center" Foreground="{StaticResource SecondaryAccentBrush}" Width="50" Height="50" Margin="40"/>
+            <Grid Background="White" Width="200" Height="70">
+                <TextBlock Name="text_message" Margin="0 -9 0 0" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{StaticResource MaterialDesignHeadline5TextBlock}">Сохраняю</TextBlock>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

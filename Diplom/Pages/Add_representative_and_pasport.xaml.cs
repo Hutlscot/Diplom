@@ -76,7 +76,8 @@ namespace Diplom
             e.Handled = !(Char.IsDigit(e.Text, 0));
         }
         private void btm_next_Click(object sender, RoutedEventArgs e)
-        { 
+        {
+            Dialog_message.MessageProgress("Сохраняю");
             Transfer.Trans("Добавить родственников");
         }
 
