@@ -11,9 +11,9 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Регистрация студента">
     <Grid>
-        <materialDesign:DialogHost>
+        <materialDesign:DialogHost x:Name="Dialog">
             <materialDesign:DialogHost.DialogContent>
-                <Grid Width="150" Height="150">
+                <Grid Width="200" Height="200" >
                     <TextBlock Style="{StaticResource MaterialDesignHeadline5TextBlock}" Foreground="{StaticResource Back}" HorizontalAlignment="Center" Margin="6" Text="Сохраняю"/>
                     <ProgressBar Width="30" Height="30" Style="{StaticResource MaterialDesignCircularProgressBar}" Foreground="{DynamicResource SecondaryAccentBrush}" IsIndeterminate="True"/>
                 </Grid>
@@ -118,11 +118,12 @@
                     materialDesign:HintAssist.Hint="Код подразделения"
                     materialDesign:TextFieldAssist.HasClearButton="True">
                         </TextBox>
-                        <Button Tag="98" Margin="25" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                        <Button Tag="98" Margin="25" 
                              Name="btm_next"
                                 Click="btm_next_Click"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="150"
+                                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                 ToolTip="Для перехода необходимо заполнить все поля"
                 materialDesign:RippleAssist.Feedback="#DD000000"
                                 Content="Далее">

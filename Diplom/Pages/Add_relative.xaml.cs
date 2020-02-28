@@ -20,11 +20,16 @@ namespace Diplom
     /// </summary>
     public partial class Add_relative : Page
     {
+        List<Person> people = new List<Person>();
+        Relative rel = new Relative { Degree = "Папочка", Address = "Семилужки" };
+        Person per = new Person { Name = "Руслан", LastName = "Камалов", MiddleName = "Владиславович", Phone = "89539216579"};
         public Add_relative()
         {
+            per.Relative = rel;
+            people.Add(per);
             InitializeComponent();
+            list.ItemsSource = people;
         }
-
         private void txt_phone_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !(Char.IsDigit(e.Text, 0));

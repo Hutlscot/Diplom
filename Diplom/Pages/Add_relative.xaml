@@ -96,17 +96,22 @@
                     </Grid.RowDefinitions>
                        
                        <!--Список родственников-->
-                    <ListBox Name="list">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Name="lbl_fio"></TextBlock>
-                                    <TextBlock Name="lbl_phone"></TextBlock>
-                                    <TextBlock Name="lbl_address"></TextBlock>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                    <ListView Name="list">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ФИО" DisplayMemberBinding="{Binding FIO}"/>
+
+                                
+                                
+                                <GridViewColumn
+                                           DisplayMemberBinding="{Binding Phone}"
+                                              Header="Телефон" />
+                                <GridViewColumn
+                                           DisplayMemberBinding="{Binding Relative.Address}"
+                                            Header="Адрес" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                     
                     
                     <materialDesign:ColorZone

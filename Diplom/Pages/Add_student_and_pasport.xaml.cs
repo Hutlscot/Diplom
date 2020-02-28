@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -80,7 +81,7 @@ namespace Diplom
         }
 
         private void btm_next_Click(object sender, RoutedEventArgs e)
-        { 
+        {
             Transfer.Trans("Добавить представителя");
         }
         //метод для загрузки фото
@@ -93,7 +94,8 @@ namespace Diplom
             //    string directory = openFile.FileName;
             //    byte[] img = File.ReadAllBytes(directory);
             //}
-            IsValidation();
+            //IsValidation();
+            Dialog_message.MessageER();
         }
         private void IsValidation()
         {
@@ -112,5 +114,6 @@ namespace Diplom
             }
             MessageBox.Show("все нормас");
         }
+
     }
 }

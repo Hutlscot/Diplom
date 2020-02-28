@@ -20,7 +20,6 @@ namespace Diplom
             this.Contracts = new HashSet<Contract>();
             this.Representatives = new HashSet<Representative>();
         }
-    
         public int Id { get; set; }
         public System.DateTime DateOfBirth { get; set; }
         public int Group { get; set; }
