@@ -21,9 +21,15 @@ namespace Diplom
     public partial class Add_relative : Page
     {
 
+        List<Relative> list = new List<Relative>();
+        Person per = new Person { Name = "Руслан", LastName = "Камалов", MiddleName = "Владиславович", Phone="8(953)-965-01-23"};
+        Relative rel = new Relative { Degree = "Папочка", Address = "Семилужки" };
         public Add_relative()
         { 
             InitializeComponent();
+            rel.Person = per;
+            list.Add(rel);
+            lists.ItemsSource = list;
         }
         private void txt_phone_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -64,6 +70,11 @@ namespace Diplom
         {
             if (Validation())
             {
+                Person person = new Person { Name = txt_name.Text, MiddleName = txt_patronymic.Text, LastName = txt_surname.Text, Phone=txt_phone.Text};
+                Relative relative = new Relative { Degree = txt_degree.Text, Address = txt_address.Text };
+                relative.Person = person;
+                list.Add(relative);
+                lists.Items.Refresh();
                 add_window.IsOpen = false;
             }
         }

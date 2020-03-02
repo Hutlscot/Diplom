@@ -9,40 +9,41 @@
         Foreground="Wheat"
         FontSize="16"
         Title="Авторизация" Height="400" Width="400" WindowStartupLocation="CenterScreen" Background="{StaticResource Back}" ResizeMode="NoResize">
-
-    <Grid>
-        <materialDesign:PackIcon Kind="UserTie"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,230,112"/>
+    <materialDesign:DialogHost>
+        <Grid>
+            <materialDesign:PackIcon Kind="UserTie"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,230,112"/>
             <materialDesign:PackIcon Kind="Key"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,230,50"/>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBox 
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBox 
                     MaxLength="15"
                     Name="txt_login"
                     materialDesign:HintAssist.Hint="Логин"
                     materialDesign:TextFieldAssist.HasClearButton="True"
                     materialDesign:TextFieldAssist.UnderlineBrush="Green">
-            </TextBox>
-            <PasswordBox
+                </TextBox>
+                <PasswordBox
                 MaxLength="15"
                      Name="txt_password"
                      materialDesign:HintAssist.Hint="Пароль"
                      materialDesign:TextFieldAssist.HasClearButton="True"
                      materialDesign:HintAssist.HelperText="Не меньше 8 символов" 
                      materialDesign:TextFieldAssist.UnderlineBrush="Green" />
-            <Button Margin="25" Name="btm_input" Click="btm_input_Click"
+                <Button Margin="25" Name="btm_input" Click="btm_input_Click"
                 Style="{StaticResource MaterialDesignRaisedAccentButton}"
                 Width="150"
                 ToolTip="Нажмите для входа"
                 materialDesign:RippleAssist.Feedback="#DD000000">
-                <Button.Content>
-                    <TextBlock Margin="0,0,0,3" Foreground="{StaticResource Back}">
+                    <Button.Content>
+                        <TextBlock Margin="0,0,0,3" Foreground="{StaticResource Back}">
                         Войти
-                    </TextBlock>
-                </Button.Content>
-            </Button>
-            
-            
-            
+                        </TextBlock>
+                    </Button.Content>
+                </Button>
 
-        </StackPanel>
-    </Grid>
+
+
+
+            </StackPanel>
+        </Grid>
+    </materialDesign:DialogHost>
 </Window>

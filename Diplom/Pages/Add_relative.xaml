@@ -14,131 +14,128 @@
         <materialDesign:DialogHost Name="add_window"
              HorizontalAlignment="Center"
              VerticalAlignment="Center">
-                <materialDesign:DialogHost.DialogContent>
-                    <StackPanel Width="350" MinHeight="300">
-                        <StackPanel Margin="20" HorizontalAlignment="Center">
-                            <TextBlock Margin="0 0 0 10" TextAlignment="Center" Text="Добавление родственника" Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
-                            <TextBox
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Width="350" MinHeight="300">
+                    <StackPanel Margin="20" HorizontalAlignment="Center">
+                        <TextBlock Margin="0 0 0 10" TextAlignment="Center" Text="Добавление родственника" Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                        <TextBox
                             FontSize="16"
                     MaxLength="25"
                     Name="txt_surname"
                     materialDesign:HintAssist.Hint="Фамилия"
                     materialDesign:TextFieldAssist.HasClearButton="True">
-                            </TextBox>
-                            <TextBox
+                        </TextBox>
+                        <TextBox
                             FontSize="16"
                     MaxLength="25"
                     Name="txt_name"
                     materialDesign:HintAssist.Hint="Имя"
                     materialDesign:TextFieldAssist.HasClearButton="True"
                     materialDesign:TransitionAssist.DisableTransitions="True">
-                            </TextBox>
-                            <TextBox 
+                        </TextBox>
+                        <TextBox 
                             FontSize="16"
                     MaxLength="25"
                     Name="txt_patronymic"
                     materialDesign:HintAssist.Hint="Отчество"
                     materialDesign:TextFieldAssist.HasClearButton="True">
-                            </TextBox>
-                            <TextBox
+                        </TextBox>
+                        <TextBox
                             FontSize="16"
                     MaxLength="17"
                     Name="txt_phone"
                             PreviewTextInput="txt_phone_PreviewTextInput"
                     materialDesign:HintAssist.Hint="Телефон"
                     materialDesign:TextFieldAssist.HasClearButton="True" >
-                            </TextBox>
-                            <TextBox
+                        </TextBox>
+                        <TextBox
                             FontSize="16"
                     MaxLength="48"
                     Name="txt_degree"
                     TextWrapping="Wrap"
                     materialDesign:HintAssist.Hint="Родство"
                     materialDesign:TextFieldAssist.HasClearButton="True">
-                            </TextBox>
-                            <TextBox
+                        </TextBox>
+                        <TextBox
                             FontSize="16"
                     MaxLength="48"
                      TextWrapping="Wrap"
                     Name="txt_address"
                     materialDesign:HintAssist.Hint="Адрес"
                     materialDesign:TextFieldAssist.HasClearButton="True">
-                            </TextBox>
-                            <StackPanel 
+                        </TextBox>
+                        <StackPanel 
                          Orientation="Horizontal"
                          HorizontalAlignment="Center">
-                                <Button Margin="10"
+                            <Button Margin="10"
                              Style="{StaticResource MaterialDesignFlatAccentBgButton}"
                              Name="btm_add"
                              Click="btm_add_Click"
                              Content="Добавить"/>
-                                <Button Margin="10" Name="btm_cancel"
+                            <Button Margin="10" Name="btm_cancel"
                            Click="btm_cancel_Click"
                              Style="{StaticResource MaterialDesignFlatButton}"
                              Content="Отмена"/>
-                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
-                </materialDesign:DialogHost.DialogContent>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
 
-                <!--Окно с родственниками-->
-                <Border
+            <!--Окно с родственниками-->
+            <Border
                  BorderThickness="1"
                  BorderBrush="{DynamicResource PrimaryHueMidBrush}"
                  MinWidth="450"
                  MinHeight="400"
                  ClipToBounds="True">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition
                          Height="*" />
-                            <RowDefinition
+                        <RowDefinition
                           Height="Auto" />
-                        </Grid.RowDefinitions>
+                    </Grid.RowDefinitions>
 
-                        <!--Список родственников-->
-                        <ListView Name="list">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="ФИО" DisplayMemberBinding="{Binding FIO}"/>
-
-
-
-                                    <GridViewColumn
-                                           DisplayMemberBinding="{Binding Phone}"
+                    <!--Список родственников-->
+                    <ListView Name="lists">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ФИО" DisplayMemberBinding="{Binding Person.FIO}"/>
+                                <GridViewColumn
+                                           DisplayMemberBinding="{Binding Person.Phone}"
                                               Header="Телефон" />
-                                    <GridViewColumn
-                                           DisplayMemberBinding="{Binding Relative.Address}"
+                                <GridViewColumn
+                                           DisplayMemberBinding="{Binding Address}"
                                             Header="Адрес" />
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
 
 
-                        <materialDesign:ColorZone
+                    <materialDesign:ColorZone
                          Mode="PrimaryMid"
                      Grid.Row="1"
                              Effect="{DynamicResource MaterialDesignShadowDepth5}">
-                            <Grid>
-                                <TextBlock
+                        <Grid>
+                            <TextBlock
                           Margin="16">
                             Список родственников
-                                </TextBlock>
-                                <!--<Button HorizontalAlignment="Right" Content="Далее" Margin="0 0 110 0"
+                            </TextBlock>
+                            <!--<Button HorizontalAlignment="Right" Content="Далее" Margin="0 0 110 0"
                                     Style="{StaticResource MaterialDesignFlatAccentBgButton}"/>-->
-                                <Button
+                            <Button
                       Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
                            HorizontalAlignment="Right"  
                         ToolTip="Перейти далее"
                              
                              Margin="0 0 15 0"
                             >
-                                    <materialDesign:PackIcon
+                                <materialDesign:PackIcon
                           Kind="ArrowForward"
                           Height="22"
                           Width="22" />
-                                </Button>
-                                <!--<Button
+                            </Button>
+                            <!--<Button
                       Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
                          Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"  
                         ToolTip="Щелкните для добавления"
@@ -149,11 +146,11 @@
                           Height="22"
                           Width="22" />
                             </Button>-->
-                            </Grid>
-                        </materialDesign:ColorZone>
+                        </Grid>
+                    </materialDesign:ColorZone>
 
-                        <!--Кнопка открытия окна-->
-                        <Button 
+                    <!--Кнопка открытия окна-->
+                    <Button 
                       Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
                          Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                              VerticalAlignment="Bottom"
@@ -161,14 +158,13 @@
                              HorizontalAlignment="Right"
                              Grid.Row="0"
                              Margin="0 0 16 10">
-                            <materialDesign:PackIcon
+                        <materialDesign:PackIcon
                           Kind="Plus"
                           Height="22"
                           Width="22" />
-                        </Button>
-                    </Grid>
-                </Border>
-            </materialDesign:DialogHost>
-
-        </Grid>
+                    </Button>
+                </Grid>
+            </Border>
+        </materialDesign:DialogHost>
+    </Grid>
 </Page>

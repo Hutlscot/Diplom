@@ -32,35 +32,36 @@ namespace Diplom
       
         private void btm_input_Click(object sender, RoutedEventArgs e)
         {
-            timer.Start();
+            if (Val.Val_txt(txt_login) || string.IsNullOrEmpty(txt_password.Password))
+            {
+                Dialog_message.MessageER("Заполните поля");
+                return;
+            }
+            using (ConnectionEntity dbContext = new ConnectionEntity())
+            {
+                User user = dbContext.Users.Where(x => x.Login == txt_login.Text && x.Password == txt_password.Password) as User;
+                if (user!=null)
+                {
+                    TimerStop();
+                    MainWindow main = new MainWindow();
+                    main.Show();
+                    Close();
+                }
+
+                else
+                {
+                    TimerStop();
+                    Dialog_message.MessageER("Неверный логин или пароль");
+                }
+            }
+
         }
         private void TimerStart(object sender, EventArgs e)
         {
             GoOver++;
             if(GoOver==1)
             {
-                if (string.IsNullOrEmpty(txt_login.Text) || string.IsNullOrEmpty(txt_password.Password))
-                {
-                    TimerStop();
-                    MessageBox.Show("Empty");
-                    return;
-                }
-                using (ConnectionEntity dbContext = new ConnectionEntity())
-                {
-                    User user = dbContext.Users.Where(x => x.Login == txt_login.Text && x.Password == txt_password.Password).FirstOrDefault() as User;
-                    if (user != null)
-                    {
-                        TimerStop();
-                        MainWindow main = new MainWindow();
-                        main.Show();
-                        Close();
-                    }
-                    else
-                    {
-                        TimerStop();
-                        MessageBox.Show("not");
-                    }
-                }
+                
             }
         }
         private void TimerStop()

@@ -61,21 +61,13 @@ namespace Diplom
         private void btm_back_Click(object sender, RoutedEventArgs e)
         {
             if (Manager_frame.frame.CanGoBack)
-
             {
-
                 Manager_frame.frame.GoBack();
-
             }
-
             else
-
             {
-
                 Authorization auth = new Authorization();
-
                 auth.Show();
-
                 Close();
 
             }
