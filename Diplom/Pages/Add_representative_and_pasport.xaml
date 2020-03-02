@@ -73,6 +73,7 @@
                     materialDesign:TextFieldAssist.HasClearButton="True">
                         </TextBox>
                         <ComboBox
+                            Name="cmb_type"
                             materialDesign:HintAssist.Hint="Кем является">
                             <ComboBoxItem>
                                 Отец

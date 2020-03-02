@@ -15,12 +15,13 @@ namespace Diplom
     public partial class Pasport
     {
         public int Id { get; set; }
-        public int Series { get; set; }
-        public int Number { get; set; }
+        public string Series { get; set; }
+        public string Number { get; set; }
         public string WhoGave { get; set; }
         public System.DateTime DateGet { get; set; }
         public string Address { get; set; }
         public string DevisionCode { get; set; }
+        public int PersonId { get; set; }
     
         public virtual Person Person { get; set; }
     }

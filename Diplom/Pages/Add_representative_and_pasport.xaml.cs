@@ -20,9 +20,11 @@ namespace Diplom
     /// </summary>
     public partial class Add_representative_and_pasport : Page
     {
-        public Add_representative_and_pasport()
+        Student student;
+        public Add_representative_and_pasport(Student student)
         {
             InitializeComponent();
+            this.student = student;
         }
         private void txt_phone_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -77,8 +79,37 @@ namespace Diplom
         }
         private void btm_next_Click(object sender, RoutedEventArgs e)
         {
-            Dialog_message.MessageOK("Сохранено");
-            Transfer.Trans("Добавить родственников");
+            if (Validation())
+            {
+                ConnectionEntity dbContex = new ConnectionEntity();
+                Person man = new Person();
+                man.Type = "Представитель";
+                man.LastName = txt_surname.Text;
+                man.Name = txt_name.Text;
+                man.MiddleName = txt_patronymic.Text;
+                man.Phone = txt_phone.Text;
+                dbContex.People.Add(man);
+                dbContex.SaveChanges();
+                Representative rep = new Representative();
+                rep.Id = man.Id;
+                rep.Type = cmb_type.SelectedIndex+1;
+                rep.PlaceOfWork = txt_place_of_work.Text;
+                rep.Residence = txt_place_of_live.Text;
+                rep.HomePhone = txt_home_phone.Text;
+                rep.StudentId = student.Id;
+                dbContex.Representatives.Add(rep);
+                Pasport pasport = new Pasport();
+                pasport.Series = txt_series.Text;
+                pasport.Number = txt_number.Text;
+                pasport.WhoGave = txt_who_gave.Text;
+                pasport.DateGet = Date_of_issue.SelectedDate.Value;
+                pasport.Address = txt_address.Text;
+                pasport.DevisionCode = txt_division_code.Text;
+                pasport.PersonId = man.Id;
+                dbContex.Pasports.Add(pasport);
+                dbContex.SaveChanges();
+                Transfer.Add("Добавить родственников", student);
+            }
         }
 
         private void txt_home_phone_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -89,6 +120,27 @@ namespace Diplom
                 txt_home_phone.Text += '-';
             }
             txt_home_phone.SelectionStart = txt_home_phone.Text.Length;
+        }
+        private bool Validation()
+        {
+            if (Val.Val_txt(txt_surname) || Val.Val_txt(txt_name) || Val.Val_txt(txt_patronymic) ||
+                Val.Val_txt(txt_phone) || Val.Val_txt(txt_place_of_work) || Val.Val_txt(txt_series) ||
+                Val.Val_txt(txt_number) || Val.Val_txt(txt_who_gave) || Val.Val_txt(txt_address) ||
+                Val.Val_txt(txt_division_code) ||Val.Val_txt(txt_place_of_live)||Val.Val_txt(txt_home_phone)||
+                Val.Val_cmb(cmb_type) || Date_of_issue.SelectedDate == null)
+            {
+                return false;
+            }
+            if (Val.Val_Phone(txt_phone))
+            {
+                return false;
+            }
+            if (Val.Val_series(txt_series) || Val.Val_number(txt_number) || Val.Val_code(txt_division_code))
+            {
+                return false;
+            }
+            Dialog_message.MessageOK("Сохранено");
+            return true;
         }
     }
 }

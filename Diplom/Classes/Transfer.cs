@@ -12,6 +12,7 @@ namespace Diplom
     public static class Transfer
     {
         static int GoOver = 0;
+        static public Student st;
         //таймер для анимации
         static DispatcherTimer timer = new DispatcherTimer();
         //название страницы
@@ -22,6 +23,12 @@ namespace Diplom
             timer.Interval = new TimeSpan(0, 0, 0, 0, 500);
         }
         //метод для перехода
+        public static void Add(string name, Student student)
+        {
+            st = student;
+            name_page = name;
+            timer.Start();
+        }
         public static void Trans(string name)
         {
             name_page = name;
@@ -42,7 +49,7 @@ namespace Diplom
                         Manager_frame.frame.Navigate(new Add_person());
                         break;
                     case "Добавить представителя":
-                        Manager_frame.frame.Navigate(new Add_representative_and_pasport());
+                        Manager_frame.frame.Navigate(new Add_representative_and_pasport(st));
                         break;
                     case "Добавить родственников":
                         Manager_frame.frame.Navigate(new Add_relative());

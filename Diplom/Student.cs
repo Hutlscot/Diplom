@@ -18,16 +18,20 @@ namespace Diplom
         public Student()
         {
             this.Contracts = new HashSet<Contract>();
+            this.Relatives = new HashSet<Relative>();
             this.Representatives = new HashSet<Representative>();
         }
+    
         public int Id { get; set; }
         public System.DateTime DateOfBirth { get; set; }
-        public int Group { get; set; }
+        public string Group { get; set; }
         public byte[] Photo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contracts { get; set; }
         public virtual Person Person { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Relative> Relatives { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Representative> Representatives { get; set; }
     }

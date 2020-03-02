@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HostelTTITModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HostelTTITModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Contract">
           <Key>
             <PropertyRef Name="Id" />
@@ -20,19 +20,20 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Series" Type="int" Nullable="false" />
-          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="Series" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="WhoGave" Type="nvarchar(max)" Nullable="false" />
           <Property Name="DateGet" Type="date" Nullable="false" />
           <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
           <Property Name="DevisionCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -57,7 +58,6 @@
           <Property Name="Residence" Type="nvarchar(max)" Nullable="false" />
           <Property Name="HomePhone" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="StudentId" Type="int" Nullable="false" />
-          <Property Name="Sex" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Room">
           <Key>
@@ -75,8 +75,8 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="DateOfBirth" Type="date" Nullable="false" />
-          <Property Name="Group" Type="int" Nullable="false" />
-          <Property Name="Photo" Type="image" Nullable="false" />
+          <Property Name="Group" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="image" />
         </EntityType>
         <EntityType Name="Type">
           <Key>
@@ -125,39 +125,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Person_Pasport">
-          <End Role="Pasport" Type="Self.Pasport" Multiplicity="1" />
-          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+        <Association Name="FK_Pasport_Person1">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Pasport" Type="Self.Pasport" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Pasport">
+            <Principal Role="Person">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Person">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Person_Representative">
-          <End Role="Representative" Type="Self.Representative" Multiplicity="1" />
-          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Representative">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Person">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Person_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Person">
-              <PropertyRef Name="Id" />
+            <Dependent Role="Pasport">
+              <PropertyRef Name="PersonId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -169,6 +145,30 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Relative">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Relative_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Relative" Type="Self.Relative" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Relative">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Representative_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Representative" Type="Self.Representative" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Representative">
               <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
@@ -205,6 +205,18 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Student">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
               <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
@@ -240,21 +252,21 @@
             <End Role="Student" EntitySet="Student" />
             <End Role="Contract" EntitySet="Contract" />
           </AssociationSet>
-          <AssociationSet Name="FK_Person_Pasport" Association="Self.FK_Person_Pasport">
+          <AssociationSet Name="FK_Pasport_Person1" Association="Self.FK_Pasport_Person1">
+            <End Role="Person" EntitySet="Person" />
             <End Role="Pasport" EntitySet="Pasport" />
-            <End Role="Person" EntitySet="Person" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Person_Representative" Association="Self.FK_Person_Representative">
-            <End Role="Representative" EntitySet="Representative" />
-            <End Role="Person" EntitySet="Person" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Person_User" Association="Self.FK_Person_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Person" EntitySet="Person" />
           </AssociationSet>
           <AssociationSet Name="FK_Relative_Person" Association="Self.FK_Relative_Person">
             <End Role="Person" EntitySet="Person" />
             <End Role="Relative" EntitySet="Relative" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Relative_Student" Association="Self.FK_Relative_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Relative" EntitySet="Relative" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Representative_Person" Association="Self.FK_Representative_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Representative" EntitySet="Representative" />
           </AssociationSet>
           <AssociationSet Name="FK_Representative_Student" Association="Self.FK_Representative_Student">
             <End Role="Student" EntitySet="Student" />
@@ -268,16 +280,75 @@
             <End Role="Person" EntitySet="Person" />
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_Person" Association="Self.FK_User_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
           <AssociationSet Name="FK_User_TypeUser" Association="Self.FK_User_TypeUser">
             <End Role="TypeUser" EntitySet="TypeUser" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HostelTTITModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ConnectionEntity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contracts" EntityType="HostelTTITModel.Contract" />
+          <EntitySet Name="Pasports" EntityType="HostelTTITModel.Pasport" />
+          <EntitySet Name="People" EntityType="HostelTTITModel.Person" />
+          <EntitySet Name="Relatives" EntityType="HostelTTITModel.Relative" />
+          <EntitySet Name="Rooms" EntityType="HostelTTITModel.Room" />
+          <EntitySet Name="Students" EntityType="HostelTTITModel.Student" />
+          <EntitySet Name="Types" EntityType="HostelTTITModel.Type" />
+          <EntitySet Name="TypeUsers" EntityType="HostelTTITModel.TypeUser" />
+          <EntitySet Name="Users" EntityType="HostelTTITModel.User" />
+          <AssociationSet Name="FK_Contract_Room" Association="HostelTTITModel.FK_Contract_Room">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contract_Student" Association="HostelTTITModel.FK_Contract_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pasport_Person1" Association="HostelTTITModel.FK_Pasport_Person1">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Pasport" EntitySet="Pasports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Relative_Person" Association="HostelTTITModel.FK_Relative_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Relative" EntitySet="Relatives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Person" Association="HostelTTITModel.FK_Student_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Person" Association="HostelTTITModel.FK_User_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Relative_Student" Association="HostelTTITModel.FK_Relative_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Relative" EntitySet="Relatives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_TypeUser" Association="HostelTTITModel.FK_User_TypeUser">
+            <End Role="TypeUser" EntitySet="TypeUsers" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Representatives" EntityType="HostelTTITModel.Representative" />
+          <AssociationSet Name="FK_Representative_Person" Association="HostelTTITModel.FK_Representative_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Representative" EntitySet="Representatives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Representative_Student" Association="HostelTTITModel.FK_Representative_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Representative" EntitySet="Representatives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Representative_Type" Association="HostelTTITModel.FK_Representative_Type">
+            <End Role="Type" EntitySet="Types" />
+            <End Role="Representative" EntitySet="Representatives" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Contract">
           <Key>
             <PropertyRef Name="Id" />
@@ -287,62 +358,49 @@
           <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="RoomId" Type="Int32" Nullable="false" />
           <Property Name="StudentId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Room" Relationship="Self.FK_Contract_Room" FromRole="Contract" ToRole="Room" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_Contract_Student" FromRole="Contract" ToRole="Student" />
+          <NavigationProperty Name="Room" Relationship="HostelTTITModel.FK_Contract_Room" FromRole="Contract" ToRole="Room" />
+          <NavigationProperty Name="Student" Relationship="HostelTTITModel.FK_Contract_Student" FromRole="Contract" ToRole="Student" />
         </EntityType>
         <EntityType Name="Pasport">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Series" Type="Int32" Nullable="false" />
-          <Property Name="Number" Type="Int32" Nullable="false" />
-          <Property Name="WhoGave" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Series" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WhoGave" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DateGet" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DevisionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Person" Relationship="Self.FK_Person_Pasport" FromRole="Pasport" ToRole="Person" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DevisionCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="HostelTTITModel.FK_Pasport_Person1" FromRole="Pasport" ToRole="Person" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Type" Type="Int32" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Pasport" Relationship="Self.FK_Person_Pasport" FromRole="Person" ToRole="Pasport" />
-          <NavigationProperty Name="Representative" Relationship="Self.FK_Person_Representative" FromRole="Person" ToRole="Representative" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Person_User" FromRole="Person" ToRole="User" />
-          <NavigationProperty Name="Relative" Relationship="Self.FK_Relative_Person" FromRole="Person" ToRole="Relative" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_Student_Person" FromRole="Person" ToRole="Student" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pasports" Relationship="HostelTTITModel.FK_Pasport_Person1" FromRole="Person" ToRole="Pasport" />
+          <NavigationProperty Name="Relative" Relationship="HostelTTITModel.FK_Relative_Person" FromRole="Person" ToRole="Relative" />
+          <NavigationProperty Name="Student" Relationship="HostelTTITModel.FK_Student_Person" FromRole="Person" ToRole="Student" />
+          <NavigationProperty Name="User" Relationship="HostelTTITModel.FK_User_Person" FromRole="Person" ToRole="User" />
+          <NavigationProperty Name="Representative" Relationship="HostelTTITModel.FK_Representative_Person" FromRole="Person" ToRole="Representative" />
         </EntityType>
         <EntityType Name="Relative">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Degree" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Degree" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="StudentId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Person" Relationship="Self.FK_Relative_Person" FromRole="Relative" ToRole="Person" />
-        </EntityType>
-        <EntityType Name="Representative">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Type" Type="Int32" Nullable="false" />
-          <Property Name="PlaceOfWork" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Residence" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="HomePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StudentId" Type="Int32" Nullable="false" />
-          <Property Name="Sex" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Person" Relationship="Self.FK_Person_Representative" FromRole="Representative" ToRole="Person" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_Representative_Student" FromRole="Representative" ToRole="Student" />
-          <NavigationProperty Name="Type1" Relationship="Self.FK_Representative_Type" FromRole="Representative" ToRole="Type" />
+          <NavigationProperty Name="Person" Relationship="HostelTTITModel.FK_Relative_Person" FromRole="Relative" ToRole="Person" />
+          <NavigationProperty Name="Student" Relationship="HostelTTITModel.FK_Relative_Student" FromRole="Relative" ToRole="Student" />
         </EntityType>
         <EntityType Name="Room">
           <Key>
@@ -350,10 +408,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Number" Type="Int32" Nullable="false" />
-          <Property Name="TechPasport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TechPasport" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Area" Type="Int32" Nullable="false" />
           <Property Name="NumberOfPlace" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Contracts" Relationship="Self.FK_Contract_Room" FromRole="Room" ToRole="Contract" />
+          <NavigationProperty Name="Contracts" Relationship="HostelTTITModel.FK_Contract_Room" FromRole="Room" ToRole="Contract" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -361,42 +419,43 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Group" Type="Int32" Nullable="false" />
-          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <NavigationProperty Name="Contracts" Relationship="Self.FK_Contract_Student" FromRole="Student" ToRole="Contract" />
-          <NavigationProperty Name="Person" Relationship="Self.FK_Student_Person" FromRole="Student" ToRole="Person" />
-          <NavigationProperty Name="Representatives" Relationship="Self.FK_Representative_Student" FromRole="Student" ToRole="Representative" />
+          <Property Name="Group" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Contracts" Relationship="HostelTTITModel.FK_Contract_Student" FromRole="Student" ToRole="Contract" />
+          <NavigationProperty Name="Person" Relationship="HostelTTITModel.FK_Student_Person" FromRole="Student" ToRole="Person" />
+          <NavigationProperty Name="Relatives" Relationship="HostelTTITModel.FK_Relative_Student" FromRole="Student" ToRole="Relative" />
+          <NavigationProperty Name="Representatives" Relationship="HostelTTITModel.FK_Representative_Student" FromRole="Student" ToRole="Representative" />
         </EntityType>
         <EntityType Name="Type">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Representatives" Relationship="Self.FK_Representative_Type" FromRole="Type" ToRole="Representative" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Representatives" Relationship="HostelTTITModel.FK_Representative_Type" FromRole="Type" ToRole="Representative" />
         </EntityType>
         <EntityType Name="TypeUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_User_TypeUser" FromRole="TypeUser" ToRole="User" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="HostelTTITModel.FK_User_TypeUser" FromRole="TypeUser" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TypeUserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Person" Relationship="Self.FK_Person_User" FromRole="User" ToRole="Person" />
-          <NavigationProperty Name="TypeUser" Relationship="Self.FK_User_TypeUser" FromRole="User" ToRole="TypeUser" />
+          <NavigationProperty Name="Person" Relationship="HostelTTITModel.FK_User_Person" FromRole="User" ToRole="Person" />
+          <NavigationProperty Name="TypeUser" Relationship="HostelTTITModel.FK_User_TypeUser" FromRole="User" ToRole="TypeUser" />
         </EntityType>
         <Association Name="FK_Contract_Room">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
-          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <End Type="HostelTTITModel.Room" Role="Room" Multiplicity="1" />
+          <End Type="HostelTTITModel.Contract" Role="Contract" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
               <PropertyRef Name="Id" />
@@ -407,8 +466,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Contract_Student">
-          <End Role="Student" Type="Self.Student" Multiplicity="1" />
-          <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+          <End Type="HostelTTITModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="HostelTTITModel.Contract" Role="Contract" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
               <PropertyRef Name="Id" />
@@ -418,45 +477,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Person_Pasport">
-          <End Role="Pasport" Type="Self.Pasport" Multiplicity="1" />
-          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+        <Association Name="FK_Pasport_Person1">
+          <End Type="HostelTTITModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="HostelTTITModel.Pasport" Role="Pasport" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Pasport">
+            <Principal Role="Person">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Person">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Person_Representative">
-          <End Role="Representative" Type="Self.Representative" Multiplicity="1" />
-          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Representative">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Person">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Person_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Person">
-              <PropertyRef Name="Id" />
+            <Dependent Role="Pasport">
+              <PropertyRef Name="PersonId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Relative_Person">
-          <End Role="Person" Type="Self.Person" Multiplicity="1" />
-          <End Role="Relative" Type="Self.Relative" Multiplicity="0..1" />
+          <End Type="HostelTTITModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="HostelTTITModel.Relative" Role="Relative" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="Id" />
@@ -467,8 +502,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Student_Person">
-          <End Role="Person" Type="Self.Person" Multiplicity="1" />
-          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Type="HostelTTITModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="HostelTTITModel.Student" Role="Student" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Person">
               <PropertyRef Name="Id" />
@@ -478,9 +513,71 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_Person">
+          <End Type="HostelTTITModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="HostelTTITModel.User" Role="User" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Relative_Student">
+          <End Type="HostelTTITModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="HostelTTITModel.Relative" Role="Relative" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Relative">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_TypeUser">
+          <End Type="HostelTTITModel.TypeUser" Role="TypeUser" Multiplicity="1" />
+          <End Type="HostelTTITModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="TypeUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Representative">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="PlaceOfWork" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Residence" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HomePhone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="HostelTTITModel.FK_Representative_Person" FromRole="Representative" ToRole="Person" />
+          <NavigationProperty Name="Student" Relationship="HostelTTITModel.FK_Representative_Student" FromRole="Representative" ToRole="Student" />
+          <NavigationProperty Name="Type1" Relationship="HostelTTITModel.FK_Representative_Type" FromRole="Representative" ToRole="Type" />
+        </EntityType>
+        <Association Name="FK_Representative_Person">
+          <End Type="HostelTTITModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="HostelTTITModel.Representative" Role="Representative" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Representative">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Representative_Student">
-          <End Role="Student" Type="Self.Student" Multiplicity="1" />
-          <End Role="Representative" Type="Self.Representative" Multiplicity="*" />
+          <End Type="HostelTTITModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="HostelTTITModel.Representative" Role="Representative" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
               <PropertyRef Name="Id" />
@@ -491,8 +588,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Representative_Type">
-          <End Role="Type" Type="Self.Type" Multiplicity="1" />
-          <End Role="Representative" Type="Self.Representative" Multiplicity="*" />
+          <End Type="HostelTTITModel.Type" Role="Type" Multiplicity="1" />
+          <End Type="HostelTTITModel.Representative" Role="Representative" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type">
               <PropertyRef Name="Id" />
@@ -502,71 +599,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_TypeUser">
-          <End Role="TypeUser" Type="Self.TypeUser" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TypeUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="TypeUserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="ConnectionEntity" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Contracts" EntityType="Self.Contract" />
-          <EntitySet Name="Pasports" EntityType="Self.Pasport" />
-          <EntitySet Name="People" EntityType="Self.Person" />
-          <EntitySet Name="Relatives" EntityType="Self.Relative" />
-          <EntitySet Name="Representatives" EntityType="Self.Representative" />
-          <EntitySet Name="Rooms" EntityType="Self.Room" />
-          <EntitySet Name="Students" EntityType="Self.Student" />
-          <EntitySet Name="Types" EntityType="Self.Type" />
-          <EntitySet Name="TypeUsers" EntityType="Self.TypeUser" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK_Contract_Room" Association="Self.FK_Contract_Room">
-            <End Role="Room" EntitySet="Rooms" />
-            <End Role="Contract" EntitySet="Contracts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Contract_Student" Association="Self.FK_Contract_Student">
-            <End Role="Student" EntitySet="Students" />
-            <End Role="Contract" EntitySet="Contracts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Person_Pasport" Association="Self.FK_Person_Pasport">
-            <End Role="Pasport" EntitySet="Pasports" />
-            <End Role="Person" EntitySet="People" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Person_Representative" Association="Self.FK_Person_Representative">
-            <End Role="Representative" EntitySet="Representatives" />
-            <End Role="Person" EntitySet="People" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Person_User" Association="Self.FK_Person_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Person" EntitySet="People" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Relative_Person" Association="Self.FK_Relative_Person">
-            <End Role="Person" EntitySet="People" />
-            <End Role="Relative" EntitySet="Relatives" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Student_Person" Association="Self.FK_Student_Person">
-            <End Role="Person" EntitySet="People" />
-            <End Role="Student" EntitySet="Students" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Representative_Student" Association="Self.FK_Representative_Student">
-            <End Role="Student" EntitySet="Students" />
-            <End Role="Representative" EntitySet="Representatives" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Representative_Type" Association="Self.FK_Representative_Type">
-            <End Role="Type" EntitySet="Types" />
-            <End Role="Representative" EntitySet="Representatives" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_TypeUser" Association="Self.FK_User_TypeUser">
-            <End Role="TypeUser" EntitySet="TypeUsers" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -575,106 +608,106 @@
           <EntitySetMapping Name="Contracts">
             <EntityTypeMapping TypeName="HostelTTITModel.Contract">
               <MappingFragment StoreEntitySet="Contract">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
-                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
-                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Pasports">
             <EntityTypeMapping TypeName="HostelTTITModel.Pasport">
               <MappingFragment StoreEntitySet="Pasport">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Series" ColumnName="Series" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="WhoGave" ColumnName="WhoGave" />
-                <ScalarProperty Name="DateGet" ColumnName="DateGet" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
                 <ScalarProperty Name="DevisionCode" ColumnName="DevisionCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DateGet" ColumnName="DateGet" />
+                <ScalarProperty Name="WhoGave" ColumnName="WhoGave" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Series" ColumnName="Series" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="People">
             <EntityTypeMapping TypeName="HostelTTITModel.Person">
               <MappingFragment StoreEntitySet="Person">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Relatives">
             <EntityTypeMapping TypeName="HostelTTITModel.Relative">
               <MappingFragment StoreEntitySet="Relative">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Representatives">
-            <EntityTypeMapping TypeName="HostelTTITModel.Representative">
-              <MappingFragment StoreEntitySet="Representative">
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="PlaceOfWork" ColumnName="PlaceOfWork" />
-                <ScalarProperty Name="Residence" ColumnName="Residence" />
-                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
-                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Rooms">
             <EntityTypeMapping TypeName="HostelTTITModel.Room">
               <MappingFragment StoreEntitySet="Room">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="TechPasport" ColumnName="TechPasport" />
-                <ScalarProperty Name="Area" ColumnName="Area" />
                 <ScalarProperty Name="NumberOfPlace" ColumnName="NumberOfPlace" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="TechPasport" ColumnName="TechPasport" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="HostelTTITModel.Student">
               <MappingFragment StoreEntitySet="Student">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-                <ScalarProperty Name="Group" ColumnName="Group" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Group" ColumnName="Group" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Types">
             <EntityTypeMapping TypeName="HostelTTITModel.Type">
               <MappingFragment StoreEntitySet="Type">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TypeUsers">
             <EntityTypeMapping TypeName="HostelTTITModel.TypeUser">
               <MappingFragment StoreEntitySet="TypeUser">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="HostelTTITModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="TypeUserId" ColumnName="TypeUserId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Representatives">
+            <EntityTypeMapping TypeName="HostelTTITModel.Representative">
+              <MappingFragment StoreEntitySet="Representative">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="Residence" ColumnName="Residence" />
+                <ScalarProperty Name="PlaceOfWork" ColumnName="PlaceOfWork" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

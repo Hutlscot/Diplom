@@ -4,27 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cce0922a2e4b43a1b4f111c96645f184" Name="Diagram1">
-        <EntityTypeShape EntityType="HostelTTITModel.Contract" Width="1.5" PointX="9.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HostelTTITModel.Pasport" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HostelTTITModel.Person" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="HostelTTITModel.Relative" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="HostelTTITModel.Representative" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HostelTTITModel.Room" Width="1.5" PointX="7.5" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HostelTTITModel.Student" Width="1.5" PointX="7.5" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HostelTTITModel.Type" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HostelTTITModel.TypeUser" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HostelTTITModel.User" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="HostelTTITModel.FK_Contract_Room" ManuallyRouted="false" />
-        <AssociationConnector Association="HostelTTITModel.FK_Contract_Student" ManuallyRouted="false" />
-        <AssociationConnector Association="HostelTTITModel.FK_Person_Pasport" ManuallyRouted="false" />
-        <AssociationConnector Association="HostelTTITModel.FK_Person_Representative" ManuallyRouted="false" />
-        <AssociationConnector Association="HostelTTITModel.FK_Person_User" ManuallyRouted="false" />
-        <AssociationConnector Association="HostelTTITModel.FK_Relative_Person" ManuallyRouted="false" />
-        <AssociationConnector Association="HostelTTITModel.FK_Student_Person" ManuallyRouted="false" />
-        <AssociationConnector Association="HostelTTITModel.FK_Representative_Student" ManuallyRouted="false" />
-        <AssociationConnector Association="HostelTTITModel.FK_Representative_Type" ManuallyRouted="false" />
-        <AssociationConnector Association="HostelTTITModel.FK_User_TypeUser" ManuallyRouted="false" />
+      <Diagram DiagramId="cce0922a2e4b43a1b4f111c96645f184" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="HostelTTITModel.Contract" Width="1.5" PointX="5.25" PointY="19.5" />
+        <EntityTypeShape EntityType="HostelTTITModel.Pasport" Width="1.5" PointX="3" PointY="9.25" />
+        <EntityTypeShape EntityType="HostelTTITModel.Person" Width="1.5" PointX="0.75" PointY="7.875" />
+        <EntityTypeShape EntityType="HostelTTITModel.Relative" Width="1.5" PointX="5.25" PointY="13.875" />
+        <EntityTypeShape EntityType="HostelTTITModel.Room" Width="1.5" PointX="3" PointY="15.625" />
+        <EntityTypeShape EntityType="HostelTTITModel.Student" Width="1.5" PointX="3" PointY="19.375" />
+        <EntityTypeShape EntityType="HostelTTITModel.Type" Width="1.5" PointX="6" PointY="11.125" />
+        <EntityTypeShape EntityType="HostelTTITModel.TypeUser" Width="1.5" PointX="0.75" PointY="4.625" />
+        <EntityTypeShape EntityType="HostelTTITModel.User" Width="1.5" PointX="3" PointY="6.375" />
+        <AssociationConnector Association="HostelTTITModel.FK_Contract_Room" />
+        <AssociationConnector Association="HostelTTITModel.FK_Contract_Student" />
+        <AssociationConnector Association="HostelTTITModel.FK_Pasport_Person1" />
+        <AssociationConnector Association="HostelTTITModel.FK_Relative_Person" />
+        <AssociationConnector Association="HostelTTITModel.FK_Student_Person" />
+        <AssociationConnector Association="HostelTTITModel.FK_User_Person" />
+        <AssociationConnector Association="HostelTTITModel.FK_Relative_Student" />
+        <AssociationConnector Association="HostelTTITModel.FK_User_TypeUser" />
+        <EntityTypeShape EntityType="HostelTTITModel.Representative" Width="1.5" PointX="8.25" PointY="13.5" />
+        <AssociationConnector Association="HostelTTITModel.FK_Representative_Person" />
+        <AssociationConnector Association="HostelTTITModel.FK_Representative_Student" />
+        <AssociationConnector Association="HostelTTITModel.FK_Representative_Type" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -14,17 +14,24 @@ namespace Diplom
     
     public partial class Person
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Person()
+        {
+            this.Pasports = new HashSet<Pasport>();
+        }
+    
         public int Id { get; set; }
-        public int Type { get; set; }
+        public string Type { get; set; }
         public string LastName { get; set; }
         public string Name { get; set; }
         public string MiddleName { get; set; }
         public string Phone { get; set; }
     
-        public virtual Pasport Pasport { get; set; }
-        public virtual Representative Representative { get; set; }
-        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pasport> Pasports { get; set; }
         public virtual Relative Relative { get; set; }
         public virtual Student Student { get; set; }
+        public virtual User User { get; set; }
+        public virtual Representative Representative { get; set; }
     }
 }

@@ -20,5 +20,6 @@ namespace Diplom
         public int StudentId { get; set; }
     
         public virtual Person Person { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

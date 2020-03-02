@@ -20,7 +20,6 @@ namespace Diplom
         public string Residence { get; set; }
         public string HomePhone { get; set; }
         public int StudentId { get; set; }
-        public bool Sex { get; set; }
     
         public virtual Person Person { get; set; }
         public virtual Student Student { get; set; }
