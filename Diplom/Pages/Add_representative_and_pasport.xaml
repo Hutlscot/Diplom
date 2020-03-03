@@ -45,7 +45,6 @@
                     materialDesign:TextFieldAssist.HasClearButton="True">
                         </TextBox>
                         <TextBox
-                    PreviewTextInput="txt_phone_PreviewTextInput"
                     MaxLength="17"
                     Name="txt_phone"
                     materialDesign:HintAssist.Hint="Телефон"
@@ -67,7 +66,6 @@
                         </TextBox>
                         <TextBox
                     MaxLength="7"
-                    PreviewTextInput="txt_home_phone_PreviewTextInput"
                     Name="txt_home_phone"
                     materialDesign:HintAssist.Hint="Домашний телефон"
                     materialDesign:TextFieldAssist.HasClearButton="True">
@@ -93,14 +91,12 @@
                         <TextBox 
                     MaxLength="5"
                     Name="txt_series"
-                    PreviewTextInput="txt_series_PreviewTextInput"
                     materialDesign:HintAssist.Hint="Серия"
                     materialDesign:TextFieldAssist.HasClearButton="True">
                         </TextBox>
                         <TextBox
                     MaxLength="6"
                     Name="txt_number"
-                    PreviewTextInput="txt_number_PreviewTextInput"
                     materialDesign:HintAssist.Hint="Номер"
                     materialDesign:TextFieldAssist.HasClearButton="True"
                 materialDesign:TransitionAssist.DisableTransitions="True">
@@ -125,7 +121,6 @@
                         </DatePicker>
                         <TextBox
                     MaxLength="7"
-                    PreviewTextInput="txt_division_code_PreviewTextInput"
                     Name="txt_division_code"
                     materialDesign:HintAssist.Hint="Код подразделения"
                     materialDesign:TextFieldAssist.HasClearButton="True">

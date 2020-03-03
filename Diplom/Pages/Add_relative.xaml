@@ -11,76 +11,10 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Регистрация студента">
     <Grid>
-        <materialDesign:DialogHost Name="add_window"
+        <materialDesign:DialogHost x:Name="add_window"
              HorizontalAlignment="Center"
              VerticalAlignment="Center">
-            <materialDesign:DialogHost.DialogContent>
-                <StackPanel Width="350" MinHeight="300">
-                    <StackPanel Margin="20" HorizontalAlignment="Center">
-                        <TextBlock Margin="0 0 0 10" TextAlignment="Center" Text="Добавление родственника" Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
-                        <TextBox
-                            FontSize="16"
-                    MaxLength="25"
-                    Name="txt_surname"
-                    materialDesign:HintAssist.Hint="Фамилия"
-                    materialDesign:TextFieldAssist.HasClearButton="True">
-                        </TextBox>
-                        <TextBox
-                            FontSize="16"
-                    MaxLength="25"
-                    Name="txt_name"
-                    materialDesign:HintAssist.Hint="Имя"
-                    materialDesign:TextFieldAssist.HasClearButton="True"
-                    materialDesign:TransitionAssist.DisableTransitions="True">
-                        </TextBox>
-                        <TextBox 
-                            FontSize="16"
-                    MaxLength="25"
-                    Name="txt_patronymic"
-                    materialDesign:HintAssist.Hint="Отчество"
-                    materialDesign:TextFieldAssist.HasClearButton="True">
-                        </TextBox>
-                        <TextBox
-                            FontSize="16"
-                    MaxLength="17"
-                    Name="txt_phone"
-                            PreviewTextInput="txt_phone_PreviewTextInput"
-                    materialDesign:HintAssist.Hint="Телефон"
-                    materialDesign:TextFieldAssist.HasClearButton="True" >
-                        </TextBox>
-                        <TextBox
-                            FontSize="16"
-                    MaxLength="48"
-                    Name="txt_degree"
-                    TextWrapping="Wrap"
-                    materialDesign:HintAssist.Hint="Родство"
-                    materialDesign:TextFieldAssist.HasClearButton="True">
-                        </TextBox>
-                        <TextBox
-                            FontSize="16"
-                    MaxLength="48"
-                     TextWrapping="Wrap"
-                    Name="txt_address"
-                    materialDesign:HintAssist.Hint="Адрес"
-                    materialDesign:TextFieldAssist.HasClearButton="True">
-                        </TextBox>
-                        <StackPanel 
-                         Orientation="Horizontal"
-                         HorizontalAlignment="Center">
-                            <Button Margin="10"
-                             Style="{StaticResource MaterialDesignFlatAccentBgButton}"
-                             Name="btm_add"
-                             Click="btm_add_Click"
-                             Content="Добавить"/>
-                            <Button Margin="10" Name="btm_cancel"
-                           Click="btm_cancel_Click"
-                             Style="{StaticResource MaterialDesignFlatButton}"
-                             Content="Отмена"/>
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
-            </materialDesign:DialogHost.DialogContent>
-
+            
             <!--Окно с родственниками-->
             <Border
                  BorderThickness="1"
@@ -127,7 +61,8 @@
                       Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
                            HorizontalAlignment="Right"  
                         ToolTip="Перейти далее"
-                             
+                             Name="btm_next"
+                             Click="btm_next_Click"
                              Margin="0 0 15 0"
                             >
                                 <materialDesign:PackIcon
@@ -152,7 +87,8 @@
                     <!--Кнопка открытия окна-->
                     <Button 
                       Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
-                         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                         Name="btm_open_window_add"
+                        Click="btm_open_window_add_Click"
                              VerticalAlignment="Bottom"
                         ToolTip="Щелкните для добавления"
                              HorizontalAlignment="Right"

@@ -52,7 +52,7 @@ namespace Diplom
                         Manager_frame.frame.Navigate(new Add_representative_and_pasport(st));
                         break;
                     case "Добавить родственников":
-                        Manager_frame.frame.Navigate(new Add_relative());
+                        Manager_frame.frame.Navigate(new Add_relative(st));
                         break;
                     case "Список студентов":
                         Manager_frame.frame.Navigate(new List_students());

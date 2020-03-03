@@ -27,94 +27,47 @@ namespace Diplom
         public Add_person()
         {
             InitializeComponent();
-        }
-        private void txt_phone_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !(Char.IsDigit(e.Text, 0));
-            Validation_phone();
-        }
-        //маска для телефона
-        private void Validation_phone()
-        {
-            if (txt_phone.Text.Length == 1)
-            {
-                txt_phone.Text = '+' + txt_phone.Text;
-            }
-            if (txt_phone.Text.Length == 2)
-            {
-                txt_phone.Text += '(';
-            }
-            if (txt_phone.Text.Length == 6)
-            {
-                txt_phone.Text += ")-";
-            }
-            if (txt_phone.Text.Length == 11)
-            {
-                txt_phone.Text += '-';
-            }
-            if (txt_phone.Text.Length == 14)
-            {
-                txt_phone.Text += '-';
-            }
-            txt_phone.SelectionStart = txt_phone.Text.Length;
-        }
-        private void txt_series_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !(Char.IsDigit(e.Text, 0));
-            if (txt_series.Text.Length == 2)
-            {
-                txt_series.Text += ' ';
-            }
-            txt_series.SelectionStart = txt_series.Text.Length;
-        }
-        private void txt_division_code_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !(Char.IsDigit(e.Text, 0));
-            if (txt_division_code.Text.Length == 3)
-            {
-                txt_division_code.Text += '-';
-            }
-            txt_division_code.SelectionStart = txt_division_code.Text.Length;
-        }
-        private void txt_number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !(Char.IsDigit(e.Text, 0));
+            txt_phone.PreviewTextInput += Val.Phone_PreviewTextInput;
+            txt_series.PreviewTextInput += Val.Series_PreviewTextInput;
+            txt_number.PreviewTextInput += Val.Number_PreviewTextInput;
+            txt_division_code.PreviewTextInput += Val.Code_PreviewTextInput;
         }
         //добавление в бд
         private void btm_next_Click(object sender, RoutedEventArgs e)
         {
-            if (Validation())
-            {
-                ConnectionEntity dbContex = new ConnectionEntity();
-                Person man = new Person();
-                man.Type = "Студент";
-                man.LastName = txt_surname.Text;
-                man.Name = txt_name.Text;
-                man.MiddleName = txt_patronymic.Text;
-                man.Phone = txt_phone.Text;
-                dbContex.People.Add(man);
-                dbContex.SaveChanges();
-                Student student = new Student();
-                student.Id = man.Id;
-                student.DateOfBirth = Date_of_birth.SelectedDate.Value;
-                student.Group = txt_group.Text;
-                if (img != null)
-                {
-                    student.Photo = img;
-                }
-                dbContex.Students.Add(student);
-                Pasport pasport = new Pasport();
-                pasport.Series = txt_series.Text;
-                pasport.Number = txt_number.Text;
-                pasport.WhoGave = txt_who_gave.Text;
-                pasport.DateGet = Date_of_issue.SelectedDate.Value;
-                pasport.Address = txt_address.Text;
-                pasport.DevisionCode = txt_division_code.Text;
-                pasport.PersonId = man.Id;
-                dbContex.Pasports.Add(pasport);
-                dbContex.SaveChanges();
+            //if (Validation())
+            //{
+            //    ConnectionEntity dbContex = new ConnectionEntity();
+            //    Person man = new Person();
+            //    man.Type = "Студент";
+            //    man.LastName = txt_surname.Text;
+            //    man.Name = txt_name.Text;
+            //    man.MiddleName = txt_patronymic.Text;
+            //    man.Phone = txt_phone.Text;
+            //    dbContex.People.Add(man);
+            //    dbContex.SaveChanges();
+            //    Student student = new Student();
+            //    student.Id = man.Id;
+            //    student.DateOfBirth = Date_of_birth.SelectedDate.Value;
+            //    student.Group = txt_group.Text;
+            //    if (img != null)
+            //    {
+            //        student.Photo = img;
+            //    }
+            //    dbContex.Students.Add(student);
+            //    Pasport pasport = new Pasport();
+            //    pasport.Series = txt_series.Text;
+            //    pasport.Number = txt_number.Text;
+            //    pasport.WhoGave = txt_who_gave.Text;
+            //    pasport.DateGet = Date_of_issue.SelectedDate.Value;
+            //    pasport.Address = txt_address.Text;
+            //    pasport.DevisionCode = txt_division_code.Text;
+            //    pasport.PersonId = man.Id;
+            //    dbContex.Pasports.Add(pasport);
+            //    dbContex.SaveChanges();
+            Student student = new Student { Id = 1 };
                 Transfer.Add("Добавить представителя",student);
-            }
+            //}
         }
         //метод для загрузки фото
         private void btm_load_photo_Click(object sender, RoutedEventArgs e)

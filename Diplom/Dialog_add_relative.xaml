@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="Diplom.Dialog_add_relative"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Diplom"
+             mc:Ignorable="d"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid>
+        <StackPanel Width="350" MinHeight="300">
+            <StackPanel Margin="20" HorizontalAlignment="Center">
+                <TextBlock Margin="0 0 0 10" TextAlignment="Center" Text="Добавление родственника" Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                <TextBox
+                            FontSize="16"
+                    MaxLength="25"
+                    Name="txt_surname"
+                    materialDesign:HintAssist.Hint="Фамилия"
+                    materialDesign:TextFieldAssist.HasClearButton="True">
+                </TextBox>
+                <TextBox
+                            FontSize="16"
+                    MaxLength="25"
+                    Name="txt_name"
+                    materialDesign:HintAssist.Hint="Имя"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    materialDesign:TransitionAssist.DisableTransitions="True">
+                </TextBox>
+                <TextBox 
+                            FontSize="16"
+                    MaxLength="25"
+                    Name="txt_patronymic"
+                    materialDesign:HintAssist.Hint="Отчество"
+                    materialDesign:TextFieldAssist.HasClearButton="True">
+                </TextBox>
+                <TextBox
+                            FontSize="16"
+                    MaxLength="17"
+                    Name="txt_phone"
+                           
+                    materialDesign:HintAssist.Hint="Телефон"
+                    materialDesign:TextFieldAssist.HasClearButton="True" >
+                </TextBox>
+                <TextBox
+                            FontSize="16"
+                    MaxLength="48"
+                    Name="txt_degree"
+                    TextWrapping="Wrap"
+                    materialDesign:HintAssist.Hint="Родство"
+                    materialDesign:TextFieldAssist.HasClearButton="True">
+                </TextBox>
+                <TextBox
+                            FontSize="16"
+                    MaxLength="48"
+                     TextWrapping="Wrap"
+                    Name="txt_address"
+                    materialDesign:HintAssist.Hint="Адрес"
+                    materialDesign:TextFieldAssist.HasClearButton="True">
+                </TextBox>
+                <StackPanel 
+                         Orientation="Horizontal"
+                         HorizontalAlignment="Center">
+                    <Button Margin="10"
+                             Style="{StaticResource MaterialDesignFlatAccentBgButton}"
+                             Name="btm_add"
+                           
+                             Content="Добавить"/>
+                    <Button Margin="10" Name="btm_cancel"
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                             Style="{StaticResource MaterialDesignFlatButton}"
+                             Content="Отмена"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

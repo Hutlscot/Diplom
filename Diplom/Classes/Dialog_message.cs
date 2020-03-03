@@ -18,5 +18,9 @@ namespace Diplom
         {
             DialogHost.Show(new DialogProgressBar(text));
         }
+        public static void MessageAddRelative()
+        {
+            DialogHost.Show(new Dialog_add_relative());
+        }
     }
 }
