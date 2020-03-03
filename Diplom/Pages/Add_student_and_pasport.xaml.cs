@@ -65,7 +65,7 @@ namespace Diplom
             //    pasport.PersonId = man.Id;
             //    dbContex.Pasports.Add(pasport);
             //    dbContex.SaveChanges();
-            Student student = new Student { Id = 1 };
+            Student student = new Student { Id = 4 };
                 Transfer.Add("Добавить представителя",student);
             //}
         }

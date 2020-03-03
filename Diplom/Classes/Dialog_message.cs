@@ -18,9 +18,19 @@ namespace Diplom
         {
             DialogHost.Show(new DialogProgressBar(text));
         }
-        public static void MessageAddRelative()
+        public static void MessageAddRelative(DialogHost CloseDialog, Student student, ListView list)
         {
-            DialogHost.Show(new Dialog_add_relative());
+            DialogHost.Show(new Dialog_add_relative(CloseDialog, student, list));
+        }
+        public static void DialogInDialogER(DialogHost dialog, string text)
+        {
+            dialog.DialogContent = new DialogERR(text);
+            dialog.IsOpen = true;
+        }
+        public static void DialogInDialogOK(DialogHost dialog, string text)
+        {
+            dialog.DialogContent = new DialogOK(text);
+            dialog.IsOpen = true;
         }
     }
 }

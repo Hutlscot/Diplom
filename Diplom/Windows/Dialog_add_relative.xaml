@@ -6,70 +6,75 @@
              xmlns:local="clr-namespace:Diplom"
              mc:Ignorable="d"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
-    <Grid>
-        <StackPanel Width="350" MinHeight="300">
-            <StackPanel Margin="20" HorizontalAlignment="Center">
-                <TextBlock Margin="0 0 0 10" TextAlignment="Center" Text="Добавление родственника" Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
-                <TextBox
+    <materialDesign:DialogHost Name="Add_window">
+        <materialDesign:DialogHost.DialogContent>
+            <Grid/>
+        </materialDesign:DialogHost.DialogContent>
+        <Grid>
+            <StackPanel Width="350" MinHeight="300">
+                <StackPanel Margin="20" HorizontalAlignment="Center">
+                    <TextBlock Margin="0 0 0 10" TextAlignment="Center" Text="Добавление родственника" Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                    <TextBox
                             FontSize="16"
                     MaxLength="25"
                     Name="txt_surname"
                     materialDesign:HintAssist.Hint="Фамилия"
                     materialDesign:TextFieldAssist.HasClearButton="True">
-                </TextBox>
-                <TextBox
+                    </TextBox>
+                    <TextBox
                             FontSize="16"
                     MaxLength="25"
                     Name="txt_name"
                     materialDesign:HintAssist.Hint="Имя"
                     materialDesign:TextFieldAssist.HasClearButton="True"
                     materialDesign:TransitionAssist.DisableTransitions="True">
-                </TextBox>
-                <TextBox 
+                    </TextBox>
+                    <TextBox 
                             FontSize="16"
                     MaxLength="25"
                     Name="txt_patronymic"
                     materialDesign:HintAssist.Hint="Отчество"
                     materialDesign:TextFieldAssist.HasClearButton="True">
-                </TextBox>
-                <TextBox
+                    </TextBox>
+                    <TextBox
                             FontSize="16"
                     MaxLength="17"
                     Name="txt_phone"
                            
                     materialDesign:HintAssist.Hint="Телефон"
                     materialDesign:TextFieldAssist.HasClearButton="True" >
-                </TextBox>
-                <TextBox
+                    </TextBox>
+                    <TextBox
                             FontSize="16"
                     MaxLength="48"
                     Name="txt_degree"
                     TextWrapping="Wrap"
                     materialDesign:HintAssist.Hint="Родство"
                     materialDesign:TextFieldAssist.HasClearButton="True">
-                </TextBox>
-                <TextBox
+                    </TextBox>
+                    <TextBox
                             FontSize="16"
                     MaxLength="48"
                      TextWrapping="Wrap"
                     Name="txt_address"
                     materialDesign:HintAssist.Hint="Адрес"
                     materialDesign:TextFieldAssist.HasClearButton="True">
-                </TextBox>
-                <StackPanel 
+                    </TextBox>
+                    <StackPanel 
                          Orientation="Horizontal"
                          HorizontalAlignment="Center">
-                    <Button Margin="10"
+                        <Button Margin="10"
                              Style="{StaticResource MaterialDesignFlatAccentBgButton}"
                              Name="btm_add"
-                           
+                             Click="btm_add_Click"
                              Content="Добавить"/>
-                    <Button Margin="10" Name="btm_cancel"
+                        <Button Margin="10" Name="btm_cancel"
                             Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
                              Style="{StaticResource MaterialDesignFlatButton}"
                              Content="Отмена"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
-        </StackPanel>
-    </Grid>
+        </Grid>
+    </materialDesign:DialogHost>
 </UserControl>
