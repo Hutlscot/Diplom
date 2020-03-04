@@ -35,7 +35,7 @@ namespace Diplom
 
         private void btm_next_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Переход к заполнению договора");
+            Transfer.Add("Добавить договор", student);
         }
     }
 }

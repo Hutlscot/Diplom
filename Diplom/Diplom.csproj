@@ -66,6 +66,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Add_contract.xaml.cs">
+      <DependentUpon>Add_contract.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Dialog_add_relative.xaml.cs">
       <DependentUpon>Dialog_add_relative.xaml</DependentUpon>
     </Compile>
@@ -134,6 +137,10 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Add_contract.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Dialog_add_relative.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

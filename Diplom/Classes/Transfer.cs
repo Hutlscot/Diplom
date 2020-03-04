@@ -54,6 +54,9 @@ namespace Diplom
                     case "Добавить родственников":
                         Manager_frame.frame.Navigate(new Add_relative(st));
                         break;
+                    case "Добавить договор":
+                        Manager_frame.frame.Navigate(new Add_contract(st));
+                        break;
                     case "Список студентов":
                         Manager_frame.frame.Navigate(new List_students());
                         break;

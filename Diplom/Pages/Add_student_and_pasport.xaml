@@ -17,7 +17,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <GroupBox Margin="30" Header="Заполнение начальных данных">
+                <GroupBox Margin="30" Header="Данные студента">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <TextBox 
                     MaxLength="25"
@@ -71,7 +71,7 @@
                         </Button>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Grid.Column="1" Margin="30" Header="Заполнение паспортных данных">
+                <GroupBox Grid.Column="1" Margin="30" Header="Паспорт студента">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <TextBox 
                     MaxLength="5"

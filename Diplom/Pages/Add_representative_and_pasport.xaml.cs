@@ -33,37 +33,37 @@ namespace Diplom
         }
         private void btm_next_Click(object sender, RoutedEventArgs e)
         {
-            //if (Validation())
-            //{
-            //    ConnectionEntity dbContex = new ConnectionEntity();
-            //    Person man = new Person();
-            //    man.Type = "Представитель";
-            //    man.LastName = txt_surname.Text;
-            //    man.Name = txt_name.Text;
-            //    man.MiddleName = txt_patronymic.Text;
-            //    man.Phone = txt_phone.Text;
-            //    dbContex.People.Add(man);
-            //    dbContex.SaveChanges();
-            //    Representative rep = new Representative();
-            //    rep.Id = man.Id;
-            //    rep.Type = cmb_type.SelectedIndex+1;
-            //    rep.PlaceOfWork = txt_place_of_work.Text;
-            //    rep.Residence = txt_place_of_live.Text;
-            //    rep.HomePhone = txt_home_phone.Text;
-            //    rep.StudentId = student.Id;
-            //    dbContex.Representatives.Add(rep);
-            //    Pasport pasport = new Pasport();
-            //    pasport.Series = txt_series.Text;
-            //    pasport.Number = txt_number.Text;
-            //    pasport.WhoGave = txt_who_gave.Text;
-            //    pasport.DateGet = Date_of_issue.SelectedDate.Value;
-            //    pasport.Address = txt_address.Text;
-            //    pasport.DevisionCode = txt_division_code.Text;
-            //    pasport.PersonId = man.Id;
-            //    dbContex.Pasports.Add(pasport);
-            //    dbContex.SaveChanges();
+            if (Validation())
+            {
+                ConnectionEntity dbContex = new ConnectionEntity();
+                Person man = new Person();
+                man.Type = "Представитель";
+                man.LastName = txt_surname.Text;
+                man.Name = txt_name.Text;
+                man.MiddleName = txt_patronymic.Text;
+                man.Phone = txt_phone.Text;
+                dbContex.People.Add(man);
+                dbContex.SaveChanges();
+                Representative rep = new Representative();
+                rep.Id = man.Id;
+                rep.Type = cmb_type.SelectedIndex + 1;
+                rep.PlaceOfWork = txt_place_of_work.Text;
+                rep.Residence = txt_place_of_live.Text;
+                rep.HomePhone = txt_home_phone.Text;
+                rep.StudentId = student.Id;
+                dbContex.Representatives.Add(rep);
+                Pasport pasport = new Pasport();
+                pasport.Series = txt_series.Text;
+                pasport.Number = txt_number.Text;
+                pasport.WhoGave = txt_who_gave.Text;
+                pasport.DateGet = Date_of_issue.SelectedDate.Value;
+                pasport.Address = txt_address.Text;
+                pasport.DevisionCode = txt_division_code.Text;
+                pasport.PersonId = man.Id;
+                dbContex.Pasports.Add(pasport);
+                dbContex.SaveChanges();
                 Transfer.Add("Добавить родственников", student);
-            //}
+            }
         }
         private bool Validation()
         {

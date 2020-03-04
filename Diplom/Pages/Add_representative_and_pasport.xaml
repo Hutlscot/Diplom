@@ -86,7 +86,7 @@
                         <Button Width="150" Margin="25" Visibility="Hidden"/>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Grid.Column="1" Margin="30" Header="Заполнение паспортных данных">
+                <GroupBox Grid.Column="1" Margin="30" Header="Паспорт представителя">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                         <TextBox 
                     MaxLength="5"

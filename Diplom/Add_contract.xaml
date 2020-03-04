@@ -1,0 +1,51 @@
+﻿<Page x:Class="Diplom.Add_contract"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Diplom"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      Foreground="Wheat"
+       FontSize="16"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Регистрация студента">
+
+    <Grid>
+        <GroupBox VerticalAlignment="Center" HorizontalAlignment="Center" Header="Данные договора">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <DatePicker
+                    Name="Date_Start"
+                    materialDesign:HintAssist.Hint="Дата заселения" />
+                <DatePicker
+                    Name="Date_End"
+                    materialDesign:HintAssist.Hint="Дата выселения" />
+                <ComboBox
+                            Name="cmb_room"
+                            materialDesign:HintAssist.Hint="Выберите комнату">
+                    <ComboBoxItem>
+                        214
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        215
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        216
+                    </ComboBoxItem>
+                </ComboBox>
+                <Button Tag="98" Margin="25"
+                                Name="btm_add_contract"
+                                Click="btm_add_contract_Click"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Width="150"
+                ToolTip="Завершить регистрацию студента">
+                    <Button.Content>
+                        <TextBlock Foreground="White" Margin="0,0,0,3">
+                        Заселить
+                            </TextBlock>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Page>
