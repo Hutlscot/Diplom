@@ -21,10 +21,10 @@ namespace Diplom
         }
     
         public int Id { get; set; }
-        public int Number { get; set; }
-        public string TechPasport { get; set; }
-        public int Area { get; set; }
+        public double Number { get; set; }
         public int NumberOfPlace { get; set; }
+        public double Area { get; set; }
+        public string TechPasport { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contracts { get; set; }

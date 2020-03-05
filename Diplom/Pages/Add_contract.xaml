@@ -22,16 +22,7 @@
                     materialDesign:HintAssist.Hint="Дата выселения" />
                 <ComboBox
                             Name="cmb_room"
-                            materialDesign:HintAssist.Hint="Выберите комнату">
-                    <ComboBoxItem>
-                        214
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        215
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        216
-                    </ComboBoxItem>
+                            materialDesign:HintAssist.Hint="Выберите комнату" DisplayMemberPath="Number">
                 </ComboBox>
                 <Button Tag="98" Margin="25"
                                 Name="btm_add_contract"

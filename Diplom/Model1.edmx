@@ -64,10 +64,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Number" Type="int" Nullable="false" />
-          <Property Name="TechPasport" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Area" Type="int" Nullable="false" />
+          <Property Name="Number" Type="float" Nullable="false" />
           <Property Name="NumberOfPlace" Type="int" Nullable="false" />
+          <Property Name="Area" Type="float" Nullable="false" />
+          <Property Name="TechPasport" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -298,15 +298,10 @@
           <EntitySet Name="Pasports" EntityType="HostelTTITModel.Pasport" />
           <EntitySet Name="People" EntityType="HostelTTITModel.Person" />
           <EntitySet Name="Relatives" EntityType="HostelTTITModel.Relative" />
-          <EntitySet Name="Rooms" EntityType="HostelTTITModel.Room" />
           <EntitySet Name="Students" EntityType="HostelTTITModel.Student" />
           <EntitySet Name="Types" EntityType="HostelTTITModel.Type" />
           <EntitySet Name="TypeUsers" EntityType="HostelTTITModel.TypeUser" />
           <EntitySet Name="Users" EntityType="HostelTTITModel.User" />
-          <AssociationSet Name="FK_Contract_Room" Association="HostelTTITModel.FK_Contract_Room">
-            <End Role="Room" EntitySet="Rooms" />
-            <End Role="Contract" EntitySet="Contracts" />
-          </AssociationSet>
           <AssociationSet Name="FK_Contract_Student" Association="HostelTTITModel.FK_Contract_Student">
             <End Role="Student" EntitySet="Students" />
             <End Role="Contract" EntitySet="Contracts" />
@@ -348,6 +343,11 @@
             <End Role="Type" EntitySet="Types" />
             <End Role="Representative" EntitySet="Representatives" />
           </AssociationSet>
+          <EntitySet Name="Rooms" EntityType="HostelTTITModel.Room" />
+          <AssociationSet Name="FK_Contract_Room" Association="HostelTTITModel.FK_Contract_Room">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Contract">
           <Key>
@@ -358,8 +358,8 @@
           <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="RoomId" Type="Int32" Nullable="false" />
           <Property Name="StudentId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Room" Relationship="HostelTTITModel.FK_Contract_Room" FromRole="Contract" ToRole="Room" />
           <NavigationProperty Name="Student" Relationship="HostelTTITModel.FK_Contract_Student" FromRole="Contract" ToRole="Student" />
+          <NavigationProperty Name="Room" Relationship="HostelTTITModel.FK_Contract_Room" FromRole="Contract" ToRole="Room" />
         </EntityType>
         <EntityType Name="Pasport">
           <Key>
@@ -402,17 +402,6 @@
           <NavigationProperty Name="Person" Relationship="HostelTTITModel.FK_Relative_Person" FromRole="Relative" ToRole="Person" />
           <NavigationProperty Name="Student" Relationship="HostelTTITModel.FK_Relative_Student" FromRole="Relative" ToRole="Student" />
         </EntityType>
-        <EntityType Name="Room">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Number" Type="Int32" Nullable="false" />
-          <Property Name="TechPasport" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Area" Type="Int32" Nullable="false" />
-          <Property Name="NumberOfPlace" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Contracts" Relationship="HostelTTITModel.FK_Contract_Room" FromRole="Room" ToRole="Contract" />
-        </EntityType>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="Id" />
@@ -453,18 +442,6 @@
           <NavigationProperty Name="Person" Relationship="HostelTTITModel.FK_User_Person" FromRole="User" ToRole="Person" />
           <NavigationProperty Name="TypeUser" Relationship="HostelTTITModel.FK_User_TypeUser" FromRole="User" ToRole="TypeUser" />
         </EntityType>
-        <Association Name="FK_Contract_Room">
-          <End Type="HostelTTITModel.Room" Role="Room" Multiplicity="1" />
-          <End Type="HostelTTITModel.Contract" Role="Contract" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Room">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Contract">
-              <PropertyRef Name="RoomId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Contract_Student">
           <End Type="HostelTTITModel.Student" Role="Student" Multiplicity="1" />
           <End Type="HostelTTITModel.Contract" Role="Contract" Multiplicity="*" />
@@ -599,6 +576,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="Double" Nullable="false" />
+          <Property Name="NumberOfPlace" Type="Int32" Nullable="false" />
+          <Property Name="Area" Type="Double" Nullable="false" />
+          <Property Name="TechPasport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contracts" Relationship="HostelTTITModel.FK_Contract_Room" FromRole="Room" ToRole="Contract" />
+        </EntityType>
+        <Association Name="FK_Contract_Room">
+          <End Type="HostelTTITModel.Room" Role="Room" Multiplicity="1" />
+          <End Type="HostelTTITModel.Contract" Role="Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -652,17 +652,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Rooms">
-            <EntityTypeMapping TypeName="HostelTTITModel.Room">
-              <MappingFragment StoreEntitySet="Room">
-                <ScalarProperty Name="NumberOfPlace" ColumnName="NumberOfPlace" />
-                <ScalarProperty Name="Area" ColumnName="Area" />
-                <ScalarProperty Name="TechPasport" ColumnName="TechPasport" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="HostelTTITModel.Student">
               <MappingFragment StoreEntitySet="Student">
@@ -707,6 +696,17 @@
                 <ScalarProperty Name="Residence" ColumnName="Residence" />
                 <ScalarProperty Name="PlaceOfWork" ColumnName="PlaceOfWork" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="HostelTTITModel.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="TechPasport" ColumnName="TechPasport" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="NumberOfPlace" ColumnName="NumberOfPlace" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

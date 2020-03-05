@@ -9,12 +9,10 @@
         <EntityTypeShape EntityType="HostelTTITModel.Pasport" Width="1.5" PointX="3" PointY="9.25" />
         <EntityTypeShape EntityType="HostelTTITModel.Person" Width="1.5" PointX="0.75" PointY="7.875" />
         <EntityTypeShape EntityType="HostelTTITModel.Relative" Width="1.5" PointX="5.25" PointY="13.875" />
-        <EntityTypeShape EntityType="HostelTTITModel.Room" Width="1.5" PointX="3" PointY="15.625" />
         <EntityTypeShape EntityType="HostelTTITModel.Student" Width="1.5" PointX="3" PointY="19.375" />
         <EntityTypeShape EntityType="HostelTTITModel.Type" Width="1.5" PointX="6" PointY="11.125" />
         <EntityTypeShape EntityType="HostelTTITModel.TypeUser" Width="1.5" PointX="0.75" PointY="4.625" />
         <EntityTypeShape EntityType="HostelTTITModel.User" Width="1.5" PointX="3" PointY="6.375" />
-        <AssociationConnector Association="HostelTTITModel.FK_Contract_Room" />
         <AssociationConnector Association="HostelTTITModel.FK_Contract_Student" />
         <AssociationConnector Association="HostelTTITModel.FK_Pasport_Person1" />
         <AssociationConnector Association="HostelTTITModel.FK_Relative_Person" />
@@ -26,6 +24,8 @@
         <AssociationConnector Association="HostelTTITModel.FK_Representative_Person" />
         <AssociationConnector Association="HostelTTITModel.FK_Representative_Student" />
         <AssociationConnector Association="HostelTTITModel.FK_Representative_Type" />
+        <EntityTypeShape EntityType="HostelTTITModel.Room" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="HostelTTITModel.FK_Contract_Room" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
