@@ -20,9 +20,16 @@ namespace Diplom
     /// </summary>
     public partial class List_students : Page
     {
+        ConnectionEntity dbContext = new ConnectionEntity();
         public List_students()
         {
             InitializeComponent();
+            list.ItemsSource = dbContext.Students.ToList();
+        }
+
+        private void btm_delete_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show((list.SelectedItem as Student).Group.ToString());
         }
     }
 }

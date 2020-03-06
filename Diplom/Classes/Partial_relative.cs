@@ -8,11 +8,16 @@ namespace Diplom
 {
     partial class Person
     {
+        //ФИО для родственников
         public string FIO
         {
             get
             {
                 return LastName + " " + Name[0] + ". " + MiddleName[0]+".";
+            }
+            set
+            {
+                this.FIO = FIO;
             }
         }
     }

@@ -70,6 +70,7 @@
     <Compile Include="Pages\Add_contract.xaml.cs">
       <DependentUpon>Add_contract.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Partial_student.cs" />
     <Compile Include="Windows\Dialog_add_relative.xaml.cs">
       <DependentUpon>Dialog_add_relative.xaml</DependentUpon>
     </Compile>
@@ -108,7 +109,7 @@
     <Compile Include="Pages\Main_page.xaml.cs">
       <DependentUpon>Main_page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Relative_fio.cs" />
+    <Compile Include="Classes\Partial_relative.cs" />
     <Compile Include="Pasport.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
