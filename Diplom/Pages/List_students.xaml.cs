@@ -55,5 +55,10 @@ namespace Diplom
         {
             student_selected = list.SelectedItem as Student;
         }
+
+        private void btm_change_Click(object sender, RoutedEventArgs e)
+        {
+            Transfer.Change_student("Редактировать студента", student_selected);
+        }
     }
 }

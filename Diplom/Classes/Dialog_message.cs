@@ -35,7 +35,6 @@ namespace Diplom
         public static void Dialog_Delete(string text, bool close)
         {
             DialogHost.Show(new Dialog_WARNING(text, close));
-
         }
     }
 }

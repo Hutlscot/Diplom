@@ -130,10 +130,10 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Foreground="White" Style="{StaticResource MaterialDesignIconButton}">
+                                    <Button ToolTip="Нажмите для редактирования" Name="btm_change" Click="btm_change_Click" Foreground="White" Style="{StaticResource MaterialDesignIconButton}">
                                         <materialDesign:PackIcon Kind="ModeEdit"  Height="20" Width="20"></materialDesign:PackIcon>
                                     </Button>
-                                    <Button Name="btm_delete" Click="btm_delete_Click" Foreground="{StaticResource ValidationErrorBrush}" Style="{StaticResource MaterialDesignIconButton}">
+                                    <Button ToolTip="Нажмите для удаления" Name="btm_delete" Click="btm_delete_Click" Foreground="{StaticResource ValidationErrorBrush}" Style="{StaticResource MaterialDesignIconButton}">
                                         <materialDesign:PackIcon Margin="5 0 0 0" Kind="DeleteAlert"  Height="20" Width="20"></materialDesign:PackIcon>
                                     </Button>
                                 </StackPanel>

@@ -30,6 +30,12 @@ namespace Diplom
             name_page = name;
             timer.Start();
         }
+        public static void Change_student(string name, Student student)
+        {
+            st = student;
+            name_page = name;
+            timer.Start();
+        }
         public static void Trans(string name)
         {
             name_page = name;
@@ -65,6 +71,9 @@ namespace Diplom
                         break;
                     case "Список студентов":
                         Manager_frame.frame.Navigate(new List_students());
+                        break;
+                    case "Редактировать студента":
+                        Manager_frame.frame.Navigate(new Add_person());
                         break;
                 }
             }
