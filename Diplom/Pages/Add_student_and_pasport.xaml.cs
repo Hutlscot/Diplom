@@ -35,39 +35,39 @@ namespace Diplom
         //добавление в бд
         private void btm_next_Click(object sender, RoutedEventArgs e)
         {
-            //if (Validation())
-            //{
-                //ConnectionEntity dbContex = new ConnectionEntity();
-                //Person man = new Person();
-                //man.Type = "Студент";
-                //man.LastName = txt_surname.Text;
-                //man.Name = txt_name.Text;
-                //man.MiddleName = txt_patronymic.Text;
-                //man.Phone = txt_phone.Text;
-                //dbContex.People.Add(man);
-                //dbContex.SaveChanges();
-                //Student student = new Student();
-                //student.Id = man.Id;
-                //student.DateOfBirth = Date_of_birth.SelectedDate.Value;
-                //student.Group = txt_group.Text;
-                //if (img != null)
-                //{
-                //    student.Photo = img;
-                //}
-                //dbContex.Students.Add(student);
-                //Pasport pasport = new Pasport();
-                //pasport.Series = txt_series.Text;
-                //pasport.Number = txt_number.Text;
-                //pasport.WhoGave = txt_who_gave.Text;
-                //pasport.DateGet = Date_of_issue.SelectedDate.Value;
-                //pasport.Address = txt_address.Text;
-                //pasport.DevisionCode = txt_division_code.Text;
-                //pasport.PersonId = man.Id;
-                //dbContex.Pasports.Add(pasport);
-                //dbContex.SaveChanges();
-                Student student = new Student { Id = 4 };
+            if (Validation())
+            {
+                ConnectionEntity dbContex = new ConnectionEntity();
+                Person man = new Person();
+                man.Type = "Студент";
+                man.LastName = txt_surname.Text;
+                man.Name = txt_name.Text;
+                man.MiddleName = txt_patronymic.Text;
+                man.Phone = txt_phone.Text;
+                dbContex.People.Add(man);
+                dbContex.SaveChanges();
+                Student student = new Student();
+                student.Id = man.Id;
+                student.DateOfBirth = Date_of_birth.SelectedDate.Value;
+                student.Group = txt_group.Text;
+                if (img != null)
+                {
+                    student.Photo = img;
+                }
+                dbContex.Students.Add(student);
+                Pasport pasport = new Pasport();
+                pasport.Series = txt_series.Text;
+                pasport.Number = txt_number.Text;
+                pasport.WhoGave = txt_who_gave.Text;
+                pasport.DateGet = Date_of_issue.SelectedDate.Value;
+                pasport.Address = txt_address.Text;
+                pasport.DevisionCode = txt_division_code.Text;
+                pasport.PersonId = man.Id;
+                dbContex.Pasports.Add(pasport);
+                dbContex.SaveChanges();
+                //Student student = new Student { Id = 4 };
                 Transfer.Add("Добавить представителя",student);
-            //}
+            }
         }
         //метод для загрузки фото
         private void btm_load_photo_Click(object sender, RoutedEventArgs e)

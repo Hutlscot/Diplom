@@ -32,5 +32,10 @@ namespace Diplom
             dialog.DialogContent = new DialogOK(text);
             dialog.IsOpen = true;
         }
+        public static void Dialog_Delete(string text, bool close)
+        {
+            DialogHost.Show(new Dialog_WARNING(text, close));
+
+        }
     }
 }

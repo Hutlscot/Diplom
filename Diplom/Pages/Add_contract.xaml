@@ -10,33 +10,34 @@
        FontSize="16"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Регистрация студента">
-
-    <Grid>
-        <GroupBox VerticalAlignment="Center" HorizontalAlignment="Center" Header="Данные договора">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                <DatePicker
+    <materialDesign:DialogHost>
+        <Grid>
+            <GroupBox VerticalAlignment="Center" HorizontalAlignment="Center" Header="Данные договора">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <DatePicker
                     Name="Date_Start"
                     materialDesign:HintAssist.Hint="Дата заселения" />
-                <DatePicker
+                    <DatePicker
                     Name="Date_End"
                     materialDesign:HintAssist.Hint="Дата выселения" />
-                <ComboBox
+                    <ComboBox
                             Name="cmb_room"
                             materialDesign:HintAssist.Hint="Выберите комнату" DisplayMemberPath="Number">
-                </ComboBox>
-                <Button Tag="98" Margin="25"
+                    </ComboBox>
+                    <Button Tag="98" Margin="25"
                                 Name="btm_add_contract"
                                 Click="btm_add_contract_Click"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="150"
                 ToolTip="Завершить регистрацию студента">
-                    <Button.Content>
-                        <TextBlock Foreground="White" Margin="0,0,0,3">
+                        <Button.Content>
+                            <TextBlock Foreground="White" Margin="0,0,0,3">
                         Заселить
                             </TextBlock>
-                    </Button.Content>
-                </Button>
-            </StackPanel>
-        </GroupBox>
-    </Grid>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+    </materialDesign:DialogHost>
 </Page>

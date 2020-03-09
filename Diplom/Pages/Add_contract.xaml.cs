@@ -39,7 +39,8 @@ namespace Diplom
                 contract.StudentId = student.Id;
                 dbContext.Contracts.Add(contract);
                 dbContext.SaveChanges();
-                Dialog_message.MessageOK("Сохранено");
+                Dialog_message.MessageOK("Студент заселен!");
+                Transfer.Trans("Добавить студента");
             }
         }
     }

@@ -29,11 +29,11 @@ namespace Diplom
         public virtual DbSet<Pasport> Pasports { get; set; }
         public virtual DbSet<Person> People { get; set; }
         public virtual DbSet<Relative> Relatives { get; set; }
+        public virtual DbSet<Representative> Representatives { get; set; }
+        public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Type> Types { get; set; }
         public virtual DbSet<TypeUser> TypeUsers { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Representative> Representatives { get; set; }
-        public virtual DbSet<Room> Rooms { get; set; }
     }
 }

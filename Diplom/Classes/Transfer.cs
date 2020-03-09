@@ -15,6 +15,7 @@ namespace Diplom
         static public Student st;
         //таймер для анимации
         static DispatcherTimer timer = new DispatcherTimer();
+        static DispatcherTimer timer_load = new DispatcherTimer();
         //название страницы
         static public string name_page;
         static public void Initialization()
@@ -32,6 +33,11 @@ namespace Diplom
         public static void Trans(string name)
         {
             name_page = name;
+            if (name == "Список студентов")
+            {
+                Dialog_message.MessageProgress("Загрузка");
+                timer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
+            }
             timer.Start();
         }
         //метод в таймере
@@ -62,10 +68,10 @@ namespace Diplom
                         break;
                 }
             }
-            TimerStop();
+            TimerStop(timer);
         }
         //остановка таймера
-        static private void TimerStop()
+        static private void TimerStop(DispatcherTimer timer)
         {
             timer.Stop();
             GoOver = 0;

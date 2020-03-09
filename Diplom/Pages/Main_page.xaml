@@ -10,52 +10,54 @@
       d:DesignHeight="500" d:DesignWidth="800"
       Title="Главная">
 
-    <Grid Background="{StaticResource Back}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
+    <materialDesign:DialogHost>
+        <Grid Background="{StaticResource Back}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
 
-        <GroupBox Header="Для чего программа" Margin="16">
-            <TextBlock>
+            <GroupBox Header="Для чего программа" Margin="16">
+                <TextBlock>
                  Данная информационная <LineBreak/> система автоматизирует <LineBreak/>и ускоряет процесс<LineBreak/> регистрации студентов в<LineBreak/> общежитии техникума и хранит все необходимые <LineBreak/> данные о них.
-            </TextBlock>
-        </GroupBox>
+                </TextBlock>
+            </GroupBox>
 
-        <GroupBox Grid.Column="1" Header="Что она умеет" Margin="16">
-            <TextBlock>
+            <GroupBox Grid.Column="1" Header="Что она умеет" Margin="16">
+                <TextBlock>
                  С помощью данной программы <LineBreak/> можно зарегистрировать<LineBreak/> студента в общежитии,<LineBreak/> посмотреть уже<LineBreak/> зарегистрированных, а также <LineBreak/> посмотреть историю по этим<LineBreak/> данным и сформировать<LineBreak/> соответствующие документы.
-            </TextBlock>
-        </GroupBox>
+                </TextBlock>
+            </GroupBox>
 
-        <GroupBox Grid.Column="2" Header="Как ей пользоваться" Margin="16">
-            <TextBlock>
+            <GroupBox Grid.Column="2" Header="Как ей пользоваться" Margin="16">
+                <TextBlock>
                  Для навигации по программе  <LineBreak/> используйте боковое меню с  <LineBreak/>кнопками, которое находится <LineBreak/>слева. В случае возникновения<LineBreak/> трудностей обратитесь к <LineBreak/>системному админитратору или<LineBreak/> воспользуйтесь руководством<LineBreak/> пользователя.
-            </TextBlock>
-        </GroupBox>
+                </TextBlock>
+            </GroupBox>
 
-        <GroupBox Grid.Row="1" Header="Кто ее написал" Margin="16">
-            <TextBlock>
+            <GroupBox Grid.Row="1" Header="Кто ее написал" Margin="16">
+                <TextBlock>
                  Разработал данное<LineBreak/> программное обеспечение <LineBreak/>программист-разработчик<LineBreak/> Воронцов Роман Дмитрич. <LineBreak/>Хочешь такое же? Пиши на<LineBreak/> почту vorontsov.r@gmail.com
-            </TextBlock>
-        </GroupBox>
+                </TextBlock>
+            </GroupBox>
 
-        <GroupBox Grid.Row="1" Grid.Column="1" Header="Частые ошибки" Margin="16">
-            <TextBlock>
+            <GroupBox Grid.Row="1" Grid.Column="1" Header="Частые ошибки" Margin="16">
+                <TextBlock>
                  В случае возникновения<LineBreak/> программной ошибки, <LineBreak/>постарайтесь запомнить <LineBreak/>последовательность ваших<LineBreak/> действий, приведшей к ней и <LineBreak/>сообщите об этом нам на почту.  <LineBreak/>Мы постараемся исправить ее <LineBreak/> в кратчайший срок.
-            </TextBlock>
-        </GroupBox>
+                </TextBlock>
+            </GroupBox>
 
-        <GroupBox Grid.Row="1" Grid.Column="2" Header="Если забыли пароль" Margin="16">
-            <TextBlock>
+            <GroupBox Grid.Row="1" Grid.Column="2" Header="Если забыли пароль" Margin="16">
+                <TextBlock>
                  Если вы забыли пароль или <LineBreak/>логин, то вам нужно обратиться<LineBreak/> к системному администратору,<LineBreak/> который 
                  выдаст вам новый, или <LineBreak/> сообщит старый.
-            </TextBlock>
-        </GroupBox>
-    </Grid>
+                </TextBlock>
+            </GroupBox>
+        </Grid>
+    </materialDesign:DialogHost>
 </Page>

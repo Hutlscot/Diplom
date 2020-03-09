@@ -48,6 +48,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -67,10 +68,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Generation_room.cs" />
+    <Compile Include="Dialog_WARNING.xaml.cs">
+      <DependentUpon>Dialog_WARNING.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Add_contract.xaml.cs">
       <DependentUpon>Add_contract.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Partial_student.cs" />
+    <Compile Include="Classes\Partial_student.cs" />
     <Compile Include="Windows\Dialog_add_relative.xaml.cs">
       <DependentUpon>Dialog_add_relative.xaml</DependentUpon>
     </Compile>
@@ -139,6 +143,10 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Dialog_WARNING.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Add_contract.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

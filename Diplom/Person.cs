@@ -30,8 +30,8 @@ namespace Diplom
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pasport> Pasports { get; set; }
         public virtual Relative Relative { get; set; }
+        public virtual Representative Representative { get; set; }
         public virtual Student Student { get; set; }
         public virtual User User { get; set; }
-        public virtual Representative Representative { get; set; }
     }
 }
