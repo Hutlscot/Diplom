@@ -72,6 +72,9 @@ namespace Diplom
                     case "Список студентов":
                         Manager_frame.frame.Navigate(new List_students());
                         break;
+                    case "Список родственников":
+                        Manager_frame.frame.Navigate(new List_relatives());
+                        break;
                     case "Редактировать студента":
                         Manager_frame.frame.Navigate(new Add_person());
                         break;

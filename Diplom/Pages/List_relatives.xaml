@@ -4,11 +4,97 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Diplom"
-      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      Foreground="Wheat"
+      FontSize="16"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="List_relatives">
+      Title="Список родственников">
+
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <StackPanel  Orientation="Horizontal">
+                <TextBlock Text="Найти:" Margin="15" Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
+                <TextBox Margin="10" Foreground="Wheat"
+                    MaxLength="30"
+                    FontSize="16"
+                    TextWrapping="Wrap"
+                    Name="txt_fio"
+                    TextChanged="txt_fio_TextChanged"
+                    materialDesign:HintAssist.Hint="Введите фамилию студента"
+                    materialDesign:TextFieldAssist.HasClearButton="True" >
+                </TextBox>
+            </StackPanel>
+        </Grid>
+        <DataGrid Grid.Row="1"
+            Name="list"
+            SelectionMode="Single"
+                  IsReadOnly="True"
+            CanUserSortColumns="True"
+            CanUserAddRows="False"
+            AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding Person.Id}"
+                    Header="№">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </materialDesign:DataGridTextColumn>
+
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding Person.FIO}"
+                    Header="ФИО студента">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </materialDesign:DataGridTextColumn>
+
+                <DataGridTemplateColumn Header="Родственники студента">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Expander Header="Раскрыть список">
+                                <DataGrid ItemsSource="{Binding Relatives}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="№" Binding="{Binding Id}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="ФИО родственника" Binding="{Binding Person.FIO}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Родство" Binding="{Binding Degree}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="№ Телефона" Binding="{Binding Person.Phone}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Адрес" Binding="{Binding Address}"></DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Expander>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!--<DataGridTemplateColumn Header="Редактировать">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button ToolTip="Нажмите для редактирования" Name="btm_change" Click="btm_change_Click" Foreground="White" Style="{StaticResource MaterialDesignIconButton}">
+                                        <materialDesign:PackIcon Kind="ModeEdit"  Height="20" Width="20"></materialDesign:PackIcon>
+                                    </Button>
+                                    <Button ToolTip="Нажмите для удаления" Name="btm_delete" Click="btm_delete_Click" Foreground="{StaticResource ValidationErrorBrush}" Style="{StaticResource MaterialDesignIconButton}">
+                                        <materialDesign:PackIcon Margin="5 0 0 0" Kind="DeleteAlert"  Height="20" Width="20"></materialDesign:PackIcon>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

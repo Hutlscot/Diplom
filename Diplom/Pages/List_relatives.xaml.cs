@@ -20,9 +20,18 @@ namespace Diplom
     /// </summary>
     public partial class List_relatives : Page
     {
+        ConnectionEntity dbContext = new ConnectionEntity();
+        List<Student> students;
         public List_relatives()
         {
             InitializeComponent();
+            students = dbContext.Students.ToList();
+            list.ItemsSource = students;
+        }
+
+        private void txt_fio_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            list.ItemsSource = students.Where(x => x.Person.LastName.ToLower().Contains(txt_fio.Text.ToLower())).ToList();
         }
     }
 }
