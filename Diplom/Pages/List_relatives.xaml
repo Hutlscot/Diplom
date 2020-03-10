@@ -29,6 +29,10 @@
                     materialDesign:HintAssist.Hint="Введите фамилию студента"
                     materialDesign:TextFieldAssist.HasClearButton="True" >
                 </TextBox>
+                <DatePicker Margin="10"
+                    Name="Date_End"
+                            SelectedDateChanged="Date_End_SelectedDateChanged"
+                    materialDesign:HintAssist.Hint="Дата заселения с  " />
             </StackPanel>
         </Grid>
         <DataGrid Grid.Row="1"
@@ -79,21 +83,6 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-
-                <!--<DataGridTemplateColumn Header="Редактировать">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Button ToolTip="Нажмите для редактирования" Name="btm_change" Click="btm_change_Click" Foreground="White" Style="{StaticResource MaterialDesignIconButton}">
-                                        <materialDesign:PackIcon Kind="ModeEdit"  Height="20" Width="20"></materialDesign:PackIcon>
-                                    </Button>
-                                    <Button ToolTip="Нажмите для удаления" Name="btm_delete" Click="btm_delete_Click" Foreground="{StaticResource ValidationErrorBrush}" Style="{StaticResource MaterialDesignIconButton}">
-                                        <materialDesign:PackIcon Margin="5 0 0 0" Kind="DeleteAlert"  Height="20" Width="20"></materialDesign:PackIcon>
-                                    </Button>
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>-->
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

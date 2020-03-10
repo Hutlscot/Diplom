@@ -71,6 +71,7 @@
     <Compile Include="Pages\List_relatives.xaml.cs">
       <DependentUpon>List_relatives.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Search.cs" />
     <Compile Include="Windows\Dialog_WARNING.xaml.cs">
       <DependentUpon>Dialog_WARNING.xaml</DependentUpon>
     </Compile>

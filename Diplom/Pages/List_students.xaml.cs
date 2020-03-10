@@ -29,16 +29,21 @@ namespace Diplom
             students = dbContext.Students.ToList();
             list.ItemsSource = students;
         }
-
+        //запрос на подтверждение
         private void btm_delete_Click(object sender, RoutedEventArgs e)
         {
             text_message.Text = "Удалить\n"+student_selected.Person.FIO+" ?";
             Warning.IsOpen = true;
-        }
+        }//поиск
         private void txt_fio_TextChanged(object sender, TextChangedEventArgs e)
         {
-            list.ItemsSource = students.Where(x => x.Person.LastName.ToLower().Contains(txt_fio.Text.ToLower())).ToList();
+            list.ItemsSource = Search.Find_Student(students, txt_fio.Text, Date_End);
+        }//поиск
+        private void Date_End_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            list.ItemsSource = Search.Find_Student(students, txt_fio.Text, Date_End);
         }
+        //метод удаления
         private void btm_OK_Click(object sender, RoutedEventArgs e)
         {
             int rep = student_selected.Representatives.FirstOrDefault().Person.Id;

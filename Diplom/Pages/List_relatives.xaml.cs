@@ -31,7 +31,12 @@ namespace Diplom
 
         private void txt_fio_TextChanged(object sender, TextChangedEventArgs e)
         {
-            list.ItemsSource = students.Where(x => x.Person.LastName.ToLower().Contains(txt_fio.Text.ToLower())).ToList();
+            list.ItemsSource = Search.Find_Student(students, txt_fio.Text, Date_End);
+        }
+
+        private void Date_End_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            list.ItemsSource = Search.Find_Student(students, txt_fio.Text, Date_End);
         }
     }
 }
