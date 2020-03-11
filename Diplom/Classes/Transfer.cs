@@ -39,7 +39,7 @@ namespace Diplom
         public static void Trans(string name)
         {
             name_page = name;
-            if (name == "Список студентов")
+            if (name == "Список студентов"|| name == "Список родственников" || name == "Список комнат")
             {
                 Dialog_message.MessageProgress("Загрузка");
                 timer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
@@ -77,6 +77,9 @@ namespace Diplom
                         break;
                     case "Редактировать студента":
                         Manager_frame.frame.Navigate(new Add_person());
+                        break;
+                    case "Список комнат":
+                        Manager_frame.frame.Navigate(new List_rooms());
                         break;
                 }
             }

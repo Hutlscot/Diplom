@@ -12,15 +12,16 @@
       Title="Список родственников">
 
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <materialDesign:DialogHost>
         <Grid>
-            <StackPanel  Orientation="Horizontal">
-                <TextBlock Text="Найти:" Margin="15" Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
-                <TextBox Margin="10" Foreground="Wheat"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <StackPanel  Orientation="Horizontal">
+                    <TextBlock Foreground="White" Text="Найти:" Margin="15" Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
+                    <TextBox Margin="10"
                     MaxLength="30"
                     FontSize="16"
                     TextWrapping="Wrap"
@@ -28,62 +29,63 @@
                     TextChanged="txt_fio_TextChanged"
                     materialDesign:HintAssist.Hint="Введите фамилию студента"
                     materialDesign:TextFieldAssist.HasClearButton="True" >
-                </TextBox>
-                <DatePicker Margin="10"
+                    </TextBox>
+                    <DatePicker Margin="10"
                     Name="Date_End"
                             SelectedDateChanged="Date_End_SelectedDateChanged"
                     materialDesign:HintAssist.Hint="Дата заселения с  " />
-            </StackPanel>
-        </Grid>
-        <DataGrid Grid.Row="1"
+                </StackPanel>
+            </Grid>
+            <DataGrid Grid.Row="1"
             Name="list"
             SelectionMode="Single"
                   IsReadOnly="True"
             CanUserSortColumns="True"
             CanUserAddRows="False"
             AutoGenerateColumns="False" >
-            <DataGrid.Columns>
+                <DataGrid.Columns>
 
-                <materialDesign:DataGridTextColumn
+                    <materialDesign:DataGridTextColumn
                     Binding="{Binding Person.Id}"
                     Header="№">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="VerticalAlignment" Value="Center"/>
-                            <Setter Property="Margin" Value="3"/>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </materialDesign:DataGridTextColumn>
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </materialDesign:DataGridTextColumn>
 
-                <materialDesign:DataGridTextColumn
+                    <materialDesign:DataGridTextColumn
                     Binding="{Binding Person.FIO}"
                     Header="ФИО студента">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="VerticalAlignment" Value="Center"/>
-                            <Setter Property="Margin" Value="3"/>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </materialDesign:DataGridTextColumn>
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </materialDesign:DataGridTextColumn>
 
-                <DataGridTemplateColumn Header="Родственники студента">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Expander Header="Раскрыть список">
-                                <DataGrid ItemsSource="{Binding Relatives}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Header="№" Binding="{Binding Id}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="ФИО родственника" Binding="{Binding Person.FIO}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="Родство" Binding="{Binding Degree}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="№ Телефона" Binding="{Binding Person.Phone}"></DataGridTextColumn>
-                                        <DataGridTextColumn Header="Адрес" Binding="{Binding Address}"></DataGridTextColumn>
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                            </Expander>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+                    <DataGridTemplateColumn Header="Родственники студента">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Expander Header="Раскрыть список">
+                                    <DataGrid ItemsSource="{Binding Relatives}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="№" Binding="{Binding Id}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="ФИО родственника" Binding="{Binding Person.FIO}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Родство" Binding="{Binding Degree}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="№ Телефона" Binding="{Binding Person.Phone}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Адрес" Binding="{Binding Address}"></DataGridTextColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </Expander>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </materialDesign:DialogHost>
 </Page>
