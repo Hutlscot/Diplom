@@ -30,13 +30,19 @@ namespace Diplom
 
         private void btm_delete_Click(object sender, RoutedEventArgs e)
         {
-            //dbContext.Rooms.Remove(room_selected);
-            //dbContext.SaveChanges();
-            //list.ItemsSource = dbContext.Rooms.ToList();
+            text_message.Text = "Удалить\nкомнату № " + room_selected.Number + " ?";
+            Warning.IsOpen = true;
         }
         private void list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             room_selected = list.SelectedItem as Room;
+        }
+
+        private void btm_OK_Click(object sender, RoutedEventArgs e)
+        {
+            dbContext.Rooms.Remove(room_selected);
+            dbContext.SaveChanges();
+            list.ItemsSource = dbContext.Rooms.ToList();
         }
     }
 }

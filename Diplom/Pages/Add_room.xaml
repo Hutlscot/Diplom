@@ -28,7 +28,7 @@
                     materialDesign:TextFieldAssist.HasClearButton="True">
                     </TextBox>
                     <TextBox 
-                    MaxLength="2"
+                    MaxLength="4"
                     Name="txt_area"
                     materialDesign:HintAssist.Hint="Площадь"
                     materialDesign:TextFieldAssist.HasClearButton="True">
