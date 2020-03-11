@@ -30,9 +30,9 @@ namespace Diplom
 
         private void btm_delete_Click(object sender, RoutedEventArgs e)
         {
-            dbContext.Rooms.Remove(room_selected);
-            dbContext.SaveChanges();
-            list.ItemsSource = dbContext.Rooms.ToList();
+            //dbContext.Rooms.Remove(room_selected);
+            //dbContext.SaveChanges();
+            //list.ItemsSource = dbContext.Rooms.ToList();
         }
         private void list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

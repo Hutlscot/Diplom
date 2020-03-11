@@ -1,0 +1,56 @@
+﻿<Page x:Class="Diplom.Add_room"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Diplom"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      Foreground="Wheat"
+      FontSize="16"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Добавить комнату">
+
+    <materialDesign:DialogHost>
+        <Grid>
+            <GroupBox VerticalAlignment="Center" HorizontalAlignment="Center" Header="Данные комнаты">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <TextBox
+                    MaxLength="5"
+                    Name="txt_number"
+                    materialDesign:HintAssist.Hint="Номер"
+                    materialDesign:TextFieldAssist.HasClearButton="True">
+                    </TextBox>
+                    <TextBox 
+                    MaxLength="15"
+                    Name="txt_pasport"
+                    materialDesign:HintAssist.Hint="№ тех. паспорта"
+                    materialDesign:TextFieldAssist.HasClearButton="True">
+                    </TextBox>
+                    <TextBox 
+                    MaxLength="2"
+                    Name="txt_area"
+                    materialDesign:HintAssist.Hint="Площадь"
+                    materialDesign:TextFieldAssist.HasClearButton="True">
+                    </TextBox>
+                    <TextBox 
+                    MaxLength="1"
+                    Name="txt_number_of_place"
+                    materialDesign:HintAssist.Hint="Кол-во мест"
+                    materialDesign:TextFieldAssist.HasClearButton="True">
+                    </TextBox>
+                    <Button Tag="98" Margin="25"
+                                Name="btm_add_contract"
+                            Click="btm_add_contract_Click"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Width="150"
+                ToolTip="Нажмите для сохранения">
+                        <Button.Content>
+                            <TextBlock Text="Добавить" Foreground="White" Margin="0,0,0,3"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+    </materialDesign:DialogHost>
+</Page>

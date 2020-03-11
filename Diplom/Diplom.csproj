@@ -67,6 +67,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\Add_room.xaml.cs">
+      <DependentUpon>Add_room.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Generation_room.cs" />
     <Compile Include="Pages\List_rooms.xaml.cs">
       <DependentUpon>List_rooms.xaml</DependentUpon>
@@ -151,6 +154,10 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Pages\Add_room.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\List_rooms.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

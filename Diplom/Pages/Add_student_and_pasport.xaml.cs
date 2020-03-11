@@ -101,6 +101,5 @@ namespace Diplom
             Dialog_message.MessageOK("Сохранено");
             return true;
         }
-
     }
 }
