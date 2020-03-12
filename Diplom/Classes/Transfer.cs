@@ -84,6 +84,9 @@ namespace Diplom
                     case "Добавить комнату":
                         Manager_frame.frame.Navigate(new Add_room());
                         break;
+                    case "Управление документацией":
+                        Manager_frame.frame.Navigate(new List_contracts());
+                        break;
                 }
             }
             TimerStop(timer);
