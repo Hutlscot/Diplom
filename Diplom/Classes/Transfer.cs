@@ -90,6 +90,9 @@ namespace Diplom
                     case "Данные администратора":
                         Manager_frame.frame.Navigate(new Page_admin());
                         break;
+                    case "Добавить пользователя":
+                        Manager_frame.frame.Navigate(new Add_user());
+                        break;
                 }
             }
             TimerStop(timer);
