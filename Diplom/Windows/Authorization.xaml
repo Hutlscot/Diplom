@@ -16,6 +16,7 @@
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBox 
                     MaxLength="15"
+                    Text="admin"
                     Name="txt_login"
                     materialDesign:HintAssist.Hint="Логин"
                     materialDesign:TextFieldAssist.HasClearButton="True"
@@ -24,6 +25,7 @@
                 <PasswordBox
                 MaxLength="15"
                      Name="txt_password"
+                     Password="admin"
                      materialDesign:HintAssist.Hint="Пароль"
                      materialDesign:TextFieldAssist.HasClearButton="True"
                      materialDesign:HintAssist.HelperText="Не меньше 8 символов" 

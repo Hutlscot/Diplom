@@ -82,6 +82,9 @@
     </Compile>
     <Compile Include="Classes\Search.cs" />
     <Compile Include="Classes\Partial_room.cs" />
+    <Compile Include="Page_admin.xaml.cs">
+      <DependentUpon>Page_admin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Dialog_WARNING.xaml.cs">
       <DependentUpon>Dialog_WARNING.xaml</DependentUpon>
     </Compile>
@@ -170,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\List_relatives.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page_admin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

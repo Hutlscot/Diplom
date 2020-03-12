@@ -87,6 +87,9 @@ namespace Diplom
                     case "Управление документацией":
                         Manager_frame.frame.Navigate(new List_contracts());
                         break;
+                    case "Данные администратора":
+                        Manager_frame.frame.Navigate(new Page_admin());
+                        break;
                 }
             }
             TimerStop(timer);

@@ -39,15 +39,14 @@ namespace Diplom
             }
             using (ConnectionEntity dbContext = new ConnectionEntity())
             {
-                User user = dbContext.Users.Where(x => x.Login == txt_login.Text && x.Password == txt_password.Password) as User;
+                User user = dbContext.Users.Where(x => x.Login == txt_login.Text && x.Password == txt_password.Password).FirstOrDefault() as User;
                 if (user!=null)
                 {
                     TimerStop();
-                    MainWindow main = new MainWindow();
+                    MainWindow main = new MainWindow(user);
                     main.Show();
                     Close();
                 }
-
                 else
                 {
                     TimerStop();
