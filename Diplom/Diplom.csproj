@@ -133,7 +133,7 @@
     <Compile Include="Pages\Main_page.xaml.cs">
       <DependentUpon>Main_page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Partial_relative.cs" />
+    <Compile Include="Classes\Partial_person.cs" />
     <Compile Include="Pasport.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -28,6 +28,7 @@ namespace Diplom
             //настройка таймера для переходов по страницам
             Transfer.Initialization();
             Manager_frame.frame = frame;
+            Transfer.user = user;
             if (user.TypeUser.Name == "Юзер")
             {
 
@@ -55,14 +56,14 @@ namespace Diplom
             else
             {
                 var menuRegister = new List<SubItem>();
-                menuRegister.Add(new SubItem("Добавить пользователя"));
                 menuRegister.Add(new SubItem("Список пользователей"));
-                var item6 = new ItemMenu("Управление пользователями", menuRegister, PackIconKind.Register);
+                menuRegister.Add(new SubItem("Добавить пользователя"));
+                var item6 = new ItemMenu("Управление аккаунтами", menuRegister, PackIconKind.Register);
 
-                var item1 = new ItemMenu("Данные администратора", new UserControl(), PackIconKind.FileDocumentBox);
-                Menu.Children.Add(new UserControlMenuItem(item1));
+                var item1 = new ItemMenu("Данные администратора", new UserControl(), PackIconKind.FileUser);
                 Menu.Children.Add(new UserControlMenuItem(item6));
-                Manager_frame.frame.Navigate(new Page_admin());
+                Menu.Children.Add(new UserControlMenuItem(item1));
+                Manager_frame.frame.Navigate(new Add_user());
             }
         }
 

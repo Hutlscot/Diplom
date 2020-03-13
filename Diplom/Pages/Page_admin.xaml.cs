@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,36 @@ namespace Diplom
     /// </summary>
     public partial class Page_admin : Page
     {
+        ConnectionEntity dbContext = new ConnectionEntity();
+        
+        private string Greeting()
+        {
+            User user = dbContext.Users.Find(Transfer.user.Id);
+            if (DateTime.Now.Hour >= 0 && DateTime.Now.Hour < 4)
+            {
+                return "Доброй ночи, " + user.Person.Name_Patronymic + "!";
+            }
+            if (DateTime.Now.Hour >= 4 && DateTime.Now.Hour < 12)
+            {
+            return "Доброе утро, " + user.Person.Name_Patronymic + "!";
+            }
+            if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour < 18)
+            {
+            return "Добрый день, " + user.Person.Name_Patronymic + "!";
+            }
+            return "Добрый вечер, " + user.Person.Name_Patronymic + "!";
+        }
         public Page_admin()
         {
             InitializeComponent();
+            DataContext = dbContext.Users.Find(Transfer.user.Id);
+            dbContext.Users.Attach(DataContext as User);
+            title.Text = Greeting();
+        }
+        private void btm_save_Click(object sender, RoutedEventArgs e)
+        {
+            dbContext.SaveChanges();
+            MessageBox.Show("Save");
         }
     }
 }

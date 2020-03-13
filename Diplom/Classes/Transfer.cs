@@ -11,13 +11,14 @@ namespace Diplom
 {
     public static class Transfer
     {
-        static int GoOver = 0;
-        static public Student st;
+        static private int GoOver = 0;
+        static private Student st;
+        //пользователь при авторизации
+        static public User user;
         //таймер для анимации
-        static DispatcherTimer timer = new DispatcherTimer();
-        static DispatcherTimer timer_load = new DispatcherTimer();
+        static private DispatcherTimer timer = new DispatcherTimer();
         //название страницы
-        static public string name_page;
+        static private string name_page;
         static public void Initialization()
         {
             timer.Tick += new EventHandler(TimerStart);

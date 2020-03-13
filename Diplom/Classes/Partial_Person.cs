@@ -20,5 +20,16 @@ namespace Diplom
                 this.FIO = FIO;
             }
         }
+        public string Name_Patronymic
+        {
+            get
+            {
+                return Name + " " + MiddleName;
+            }
+            set
+            {
+                this.Name_Patronymic = Name_Patronymic;
+            }
+        }
     }
 }

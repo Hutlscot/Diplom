@@ -11,50 +11,40 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Страница администратора">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="70"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <TextBlock Text="Добрый день, Роман Дмитриевич" HorizontalAlignment="Center"
-                       VerticalAlignment="Center" FontSize="18"
+    <materialDesign:DialogHost>
+        <Grid>
+            <TextBlock Name="title" HorizontalAlignment="Center"
+                       VerticalAlignment="Top" FontSize="18"
+                       Margin="50"
                        Foreground="White"/>
-        </Grid>
-
-        <GroupBox Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Header="Данные администратора">
-            <StackPanel>
-                <TextBox 
+            <GroupBox Header="Изменить данные" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel>
+                    <TextBox 
+                        Text="{Binding Path=Login}"
                     MaxLength="25"
                     Name="txt_login"
                     materialDesign:HintAssist.Hint="Логин"
                     materialDesign:TextFieldAssist.HasClearButton="True">
-                </TextBox>
-                
-                <TextBox 
+                    </TextBox>
+
+                    <TextBox 
                     MaxLength="25"
+                        Text="{Binding Path=Password}"
                     Name="txt_password"
                     materialDesign:HintAssist.Hint="Пароль"
                     materialDesign:TextFieldAssist.HasClearButton="True">
-                </TextBox>
-                <Button Margin="25" 
-                             Name="btm_next"
-                                Click="btm_save"
+                    </TextBox>
+                    <Button 
+                    Margin="25"
+                             Name="btm_save"
+                             Click="btm_save_Click"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="150"
-                ToolTip="Нажмите для сохранения"
-                                Content="Изменить"/>
-            </StackPanel>
-        </GroupBox>
-        
-        <Button Grid.Row="2" Name="btm_change"      
-                Style="{StaticResource MaterialDesignRaisedButton}"
-                Width="150"
-                HorizontalAlignment="Right"
-                Margin="0 0 100 0"
-                ToolTip="Изменить логин или пароль администратора"
-                Content="Изменить данные">
-        </Button>
-    </Grid>
+                ToolTip="Нажмите для сохранения">
+                        <TextBlock Text="Сохранить" Margin="0,0,0,3"/>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+    </materialDesign:DialogHost>
 </Page>
