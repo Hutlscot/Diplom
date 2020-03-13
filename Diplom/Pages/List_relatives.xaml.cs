@@ -21,22 +21,20 @@ namespace Diplom
     public partial class List_relatives : Page
     {
         ConnectionEntity dbContext = new ConnectionEntity();
-        List<Student> students;
         public List_relatives()
         {
             InitializeComponent();
-            students = dbContext.Students.ToList();
-            list.ItemsSource = students;
+            list.ItemsSource = dbContext.Students.ToList();
         }
 
         private void txt_fio_TextChanged(object sender, TextChangedEventArgs e)
         {
-            list.ItemsSource = Search.Find_Student(students, txt_fio.Text, Date_End);
+            list.ItemsSource = Search.Find_Student(txt_fio.Text, Date_End);
         }
 
         private void Date_End_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            list.ItemsSource = Search.Find_Student(students, txt_fio.Text, Date_End);
+            list.ItemsSource = Search.Find_Student(txt_fio.Text, Date_End);
         }
     }
 }

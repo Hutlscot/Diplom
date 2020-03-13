@@ -24,6 +24,7 @@ namespace Diplom
         {
             if(cmb.SelectedItem==null)
             {
+                Dialog_message.MessageER("Заполните все поля");
                 return true;
             }
             return false;

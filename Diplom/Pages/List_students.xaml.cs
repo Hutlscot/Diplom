@@ -21,13 +21,11 @@ namespace Diplom
     public partial class List_students : Page
     {
         ConnectionEntity dbContext = new ConnectionEntity();
-        List<Student> students;
         Student student_selected;
         public List_students()
         {
             InitializeComponent();
-            students = dbContext.Students.ToList();
-            list.ItemsSource = students;
+            list.ItemsSource = dbContext.Students.ToList();
         }
         //запрос на подтверждение
         private void btm_delete_Click(object sender, RoutedEventArgs e)
@@ -37,11 +35,11 @@ namespace Diplom
         }//поиск
         private void txt_fio_TextChanged(object sender, TextChangedEventArgs e)
         {
-            list.ItemsSource = Search.Find_Student(students, txt_fio.Text, Date_End);
+            list.ItemsSource = Search.Find_Student(txt_fio.Text, Date_End);
         }//поиск
         private void Date_End_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            list.ItemsSource = Search.Find_Student(students, txt_fio.Text, Date_End);
+            list.ItemsSource = Search.Find_Student(txt_fio.Text, Date_End);
         }
         //метод удаления
         private void btm_OK_Click(object sender, RoutedEventArgs e)
@@ -54,7 +52,7 @@ namespace Diplom
             dbContext.People.Remove(dbContext.People.Find(rel));
             dbContext.People.Remove(dbContext.People.Find(stud));
             dbContext.SaveChanges();
-            list.ItemsSource = dbContext.Students.Where(x => x.Person.LastName.ToLower().Contains(txt_fio.Text.ToLower())).ToList();
+            list.ItemsSource = Search.Find_Student(txt_fio.Text, Date_End);
         }
         private void list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

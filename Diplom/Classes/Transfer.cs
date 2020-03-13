@@ -94,6 +94,9 @@ namespace Diplom
                     case "Добавить пользователя":
                         Manager_frame.frame.Navigate(new Add_user());
                         break;
+                    case "Список пользователей":
+                        Manager_frame.frame.Navigate(new List_users());
+                        break;
                 }
             }
             TimerStop(timer);

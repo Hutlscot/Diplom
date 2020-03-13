@@ -9,13 +9,33 @@ namespace Diplom
 {
     static class Search
     {
-        static public List<Student> Find_Student(List<Student> students,string text, DatePicker date)
+        private static ConnectionEntity dbContext = new ConnectionEntity();
+        public static List<Student> Find_Student(string surname, DatePicker date)
         {
-            if (date.SelectedDate != null)
+            if (string.IsNullOrEmpty(surname))
             {
-                 return students.Where(x => x.Person.LastName.ToLower().Contains(text.ToLower()) && x.Contracts.FirstOrDefault().DateStart > date.SelectedDate.Value).ToList();
+                if (date.SelectedDate == null)
+                {
+                    return dbContext.Students.ToList(); 
+                }
+                else return dbContext.Students.Where(x =>x.Contracts.FirstOrDefault().DateStart > date.SelectedDate.Value).ToList();
             }
-            return students.Where(x => x.Person.LastName.ToLower().Contains(text.ToLower())).ToList();
+            else
+            {
+                if (date.SelectedDate == null)
+                {
+                    return dbContext.Students.Where(x => x.Person.LastName.ToLower().Contains(surname.ToLower())).ToList();
+                }
+                else return dbContext.Students.Where(x => x.Person.LastName.ToLower().Contains(surname.ToLower()) && x.Contracts.FirstOrDefault().DateStart > date.SelectedDate.Value).ToList();
+            }
+        }
+        public static List<User> Find_user(string surname)
+        {
+            if (!string.IsNullOrEmpty(surname))
+            {
+                return dbContext.Users.Where(x =>x.Person.LastName.ToLower().Contains(surname.ToLower())).ToList();
+            }
+            else return dbContext.Users.ToList();
         }
     }
 }
