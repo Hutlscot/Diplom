@@ -15,6 +15,8 @@ namespace Diplom
         static private Student st;
         //пользователь при авторизации
         static public User user;
+        //пользователь для редактирования
+        static private User user_change;
         //таймер для анимации
         static private DispatcherTimer timer = new DispatcherTimer();
         //название страницы
@@ -34,6 +36,12 @@ namespace Diplom
         public static void Change_student(string name, Student student)
         {
             st = student;
+            name_page = name;
+            timer.Start();
+        }
+        public static void Change_user(string name, User user)
+        {
+            user_change = user;
             name_page = name;
             timer.Start();
         }
@@ -96,6 +104,9 @@ namespace Diplom
                         break;
                     case "Редактировать студента":
                         Manager_frame.frame.Navigate(new Change_student(st));
+                        break;
+                    case "Редактировать пользователя":
+                        Manager_frame.frame.Navigate(new Change_user(user_change));
                         break;
                 }
             }

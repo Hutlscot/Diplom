@@ -38,7 +38,7 @@ namespace Diplom
         }
         private void btm_change_Click(object sender, RoutedEventArgs e)
         {
-            Transfer.Trans("Редактировать пользователя");
+            Transfer.Change_user("Редактировать пользователя", user_selected);
         }
 
         private void txt_fio_TextChanged(object sender, TextChangedEventArgs e)
