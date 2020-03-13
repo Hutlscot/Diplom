@@ -49,8 +49,14 @@ namespace Diplom
         }
         private void btm_save_Click(object sender, RoutedEventArgs e)
         {
+            if(txt_login.Text.Length<5||txt_password.Text.Length<5)
+            {
+                Dialog_message.MessageER("Некорректные\nданные");
+                return;
+            }
             dbContext.SaveChanges();
-            MessageBox.Show("Save");
+            Dialog_message.MessageOK("Сохранено");
+            Transfer.Trans("Данные администратора");
         }
     }
 }
