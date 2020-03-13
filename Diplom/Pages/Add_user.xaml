@@ -5,10 +5,73 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Diplom"
       mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      FontSize="16"
+      Foreground="Wheat"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Создание пользователя">
 
-    <Grid>
-        
-    </Grid>
+
+    <materialDesign:DialogHost>
+        <GroupBox Header="Данные пользователя" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel>
+                <TextBox 
+                    MaxLength="25"
+                    Name="txt_surname"
+                    materialDesign:HintAssist.Hint="Фамилия"
+                    materialDesign:TextFieldAssist.HasClearButton="True">
+                </TextBox>
+                <TextBox
+                    MaxLength="25"
+                    Name="txt_name"
+                    materialDesign:HintAssist.Hint="Имя"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                materialDesign:TransitionAssist.DisableTransitions="True">
+                </TextBox>
+                <TextBox 
+                    MaxLength="25"
+                    Name="txt_patronymic"
+                    materialDesign:HintAssist.Hint="Отчество"
+                    materialDesign:TextFieldAssist.HasClearButton="True">
+                </TextBox>
+                <TextBox 
+                        Text="{Binding Path=Login}"
+                    MaxLength="25"
+                    Name="txt_login"
+                    materialDesign:HintAssist.HelperText="Не меньше 5 символов" 
+                    materialDesign:HintAssist.Hint="Логин"
+                    materialDesign:TextFieldAssist.HasClearButton="True">
+                </TextBox>
+
+                <TextBox 
+                    MaxLength="25"
+                        Text="{Binding Path=Password}"
+                    Name="txt_password"
+                        Margin="0 10 0 15"
+                    materialDesign:HintAssist.HelperText="Не меньше 8 символов" 
+                    materialDesign:HintAssist.Hint="Пароль"
+                    materialDesign:TextFieldAssist.HasClearButton="True">
+                </TextBox>
+                <ComboBox
+                      Name="cmb_type"
+                      materialDesign:HintAssist.Hint="Тип пользователя">
+                    <ComboBoxItem>
+                        Юзер
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        Админ
+                    </ComboBoxItem>
+                </ComboBox>
+                <Button 
+                    Margin="20"
+                             Name="btm_create"
+                            Click="btm_create_Click"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Width="150"
+                ToolTip="Нажмите для создания">
+                    <TextBlock Text="Создать" Margin="0,0,0,3"/>
+                </Button>
+            </StackPanel>
+        </GroupBox>
+    </materialDesign:DialogHost>
 </Page>

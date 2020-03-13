@@ -37,7 +37,7 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Relative">
           <Key>
@@ -96,13 +96,15 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TypeUserId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Contract_Room">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
@@ -220,7 +222,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_Person">
-          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Person">
@@ -394,7 +398,7 @@
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MiddleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Pasports" Relationship="HostelTTITModel.FK_Pasport_Person1" FromRole="Person" ToRole="Pasport" />
           <NavigationProperty Name="Relative" Relationship="HostelTTITModel.FK_Relative_Person" FromRole="Person" ToRole="Relative" />
           <NavigationProperty Name="Representative" Relationship="HostelTTITModel.FK_Representative_Person" FromRole="Person" ToRole="Representative" />
@@ -470,7 +474,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TypeUserId" Type="Int32" Nullable="false" />
@@ -478,7 +482,9 @@
           <NavigationProperty Name="TypeUser" Relationship="HostelTTITModel.FK_User_TypeUser" FromRole="User" ToRole="TypeUser" />
         </EntityType>
         <Association Name="FK_Contract_Room">
-          <End Type="HostelTTITModel.Room" Role="Room" Multiplicity="1" />
+          <End Type="HostelTTITModel.Room" Role="Room" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="HostelTTITModel.Contract" Role="Contract" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
@@ -556,7 +562,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_Person">
-          <End Type="HostelTTITModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="HostelTTITModel.Person" Role="Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="HostelTTITModel.User" Role="User" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Person">
