@@ -53,5 +53,13 @@ namespace Diplom
             }
             set { }
         }
+        public Contract Contract
+        {
+            get
+            {
+                return Contracts.FirstOrDefault();
+            }
+            set { }
+        }
     }
 }
