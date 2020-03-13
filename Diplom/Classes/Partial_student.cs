@@ -45,5 +45,13 @@ namespace Diplom
                 this.Name_rep_and_phone = Name_rep_and_phone;
             }
         }
+        public Representative Representative
+        {
+            get
+            {
+                return Representatives.FirstOrDefault();
+            }
+            set { }
+        }
     }
 }

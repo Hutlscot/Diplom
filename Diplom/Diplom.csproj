@@ -67,6 +67,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Change_representative.xaml.cs">
+      <DependentUpon>Change_representative.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Change_user.xaml.cs">
       <DependentUpon>Change_user.xaml</DependentUpon>
     </Compile>
@@ -98,6 +101,7 @@
       <DependentUpon>Page_admin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Partial_user.cs" />
+    <Compile Include="Partial_representative.cs" />
     <Compile Include="Windows\Dialog_WARNING.xaml.cs">
       <DependentUpon>Dialog_WARNING.xaml</DependentUpon>
     </Compile>
@@ -173,6 +177,10 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Change_representative.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Change_user.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

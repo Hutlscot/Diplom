@@ -105,6 +105,9 @@ namespace Diplom
                     case "Редактировать студента":
                         Manager_frame.frame.Navigate(new Change_student(st));
                         break;
+                    case "Редактировать представителя":
+                        Manager_frame.frame.Navigate(new Change_representative(st));
+                        break;
                     case "Редактировать пользователя":
                         Manager_frame.frame.Navigate(new Change_user(user_change));
                         break;
