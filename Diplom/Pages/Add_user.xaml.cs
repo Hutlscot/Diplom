@@ -24,6 +24,7 @@ namespace Diplom
         public Add_user()
         {
             InitializeComponent();
+            txt_phone.PreviewTextInput += Val.Phone_PreviewTextInput;
         }
 
         private void btm_create_Click(object sender, RoutedEventArgs e)
@@ -35,6 +36,7 @@ namespace Diplom
                 person.Type = "Пользователь";
                 person.LastName = txt_surname.Text;
                 person.MiddleName = txt_patronymic.Text;
+                person.Phone = txt_phone.Text;
                 dbContext.People.Add(person);
                 dbContext.SaveChanges();
                 User user = new User();

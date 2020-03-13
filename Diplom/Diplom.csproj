@@ -67,6 +67,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\Change_student.xaml.cs">
+      <DependentUpon>Change_student.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\List_users.xaml.cs">
       <DependentUpon>List_users.xaml</DependentUpon>
     </Compile>
@@ -166,6 +169,10 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Pages\Change_student.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\List_users.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

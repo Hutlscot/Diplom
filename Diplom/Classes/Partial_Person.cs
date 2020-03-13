@@ -31,5 +31,16 @@ namespace Diplom
                 this.Name_Patronymic = Name_Patronymic;
             }
         }
+        public Pasport Pasport
+        {
+            get
+            {
+                return Pasports.FirstOrDefault();
+            }
+            set
+            {
+
+            }
+        }
     }
 }

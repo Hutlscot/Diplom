@@ -28,7 +28,7 @@
                     materialDesign:TextFieldAssist.HasClearButton="True">
                     </TextBox>
 
-                    <TextBox 
+                    <TextBox
                     MaxLength="25"
                         Text="{Binding Path=Password}"
                     Name="txt_password"

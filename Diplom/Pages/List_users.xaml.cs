@@ -48,7 +48,9 @@ namespace Diplom
 
         private void btm_OK_Click(object sender, RoutedEventArgs e)
         {
+            int per = user_selected.Id;
             dbContext.Users.Remove(user_selected);
+            dbContext.People.Remove(dbContext.People.Find(per));
             dbContext.SaveChanges();
             list.ItemsSource = Search.Find_user(txt_fio.Text);
         }

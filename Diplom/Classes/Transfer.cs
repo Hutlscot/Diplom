@@ -76,9 +76,6 @@ namespace Diplom
                     case "Список родственников":
                         Manager_frame.frame.Navigate(new List_relatives());
                         break;
-                    case "Редактировать студента":
-                        Manager_frame.frame.Navigate(new Add_person());
-                        break;
                     case "Список комнат":
                         Manager_frame.frame.Navigate(new List_rooms());
                         break;
@@ -96,6 +93,9 @@ namespace Diplom
                         break;
                     case "Список пользователей":
                         Manager_frame.frame.Navigate(new List_users());
+                        break;
+                    case "Редактировать студента":
+                        Manager_frame.frame.Navigate(new Change_student(st));
                         break;
                 }
             }

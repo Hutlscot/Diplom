@@ -35,7 +35,13 @@
                     materialDesign:TextFieldAssist.HasClearButton="True">
                 </TextBox>
                 <TextBox 
-                        Text="{Binding Path=Login}"
+                    MaxLength="25"
+                    Name="txt_phone"
+                    materialDesign:HintAssist.Hint="Телефон"
+                    materialDesign:TextFieldAssist.HasClearButton="True">
+                </TextBox>
+                <TextBox 
+                       
                     MaxLength="25"
                     Name="txt_login"
                     materialDesign:HintAssist.HelperText="Не меньше 5 символов" 
@@ -43,9 +49,9 @@
                     materialDesign:TextFieldAssist.HasClearButton="True">
                 </TextBox>
 
-                <TextBox 
+                <TextBox
                     MaxLength="25"
-                        Text="{Binding Path=Password}"
+                        
                     Name="txt_password"
                         Margin="0 10 0 15"
                     materialDesign:HintAssist.HelperText="Не меньше 8 символов" 
