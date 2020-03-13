@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="Diplom.Menu_change_student"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Diplom"
+             mc:Ignorable="d" 
+             Foreground="Black"
+             FontSize="16"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="360" d:DesignWidth="300">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center">
+            <TextBlock Text="Меню редактирования" HorizontalAlignment="Center" Margin="20"/>
+            <Button
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Width="150" 
+                    Height="50"
+                    Name="btm_change_student"    
+                Click="btm_change_student_Click"
+                ToolTip="Нажмите для редактирования студента"
+                materialDesign:RippleAssist.Feedback="#DD000000">
+                <Button.Content>
+                    <TextBlock Foreground="White" TextAlignment="Center" Margin="0,0,0,3" TextWrapping="Wrap">
+                        Редактировать студента
+                    </TextBlock>
+                </Button.Content>
+            </Button>
+            <Button Margin="25"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Width="150"
+                    Height="50"
+                    Name="btm_change_representative"
+                          Click="btm_change_representative_Click"      
+                ToolTip="Нажмите для редактирования представителя студента"
+                materialDesign:RippleAssist.Feedback="#DD000000">
+                <Button.Content>
+                    <TextBlock Foreground="White" Margin="0,0,0,3" TextWrapping="Wrap"  TextAlignment="Center">
+                        Редактировать представителя
+                    </TextBlock>
+                </Button.Content>
+            </Button>
+            <Button 
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Width="150"
+                    Height="50"
+                    Name="btm_change_relative"
+                Click="btm_change_relative_Click"
+                ToolTip="Нажмите для редактирования списка родственников студента"
+                materialDesign:RippleAssist.Feedback="#DD000000">
+                <Button.Content>
+                    <TextBlock Foreground="White" TextAlignment="Center" Margin="0,0,0,3" TextWrapping="Wrap">
+                        Редактировать родственников
+                    </TextBlock>
+                </Button.Content>
+            </Button>
+            <Button  Margin="25"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Width="150" 
+                     Height="50"
+                     Name="btm_change_contract"
+                     Click="btm_change_contract_Click"
+                ToolTip="Нажмите для редактирования договора студента"
+                materialDesign:RippleAssist.Feedback="#DD000000">
+                <Button.Content>
+                    <TextBlock Foreground="White" Margin="0,0,0,3" TextWrapping="Wrap" TextAlignment="Center">
+                        Редактировать договор
+                    </TextBlock>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

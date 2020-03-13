@@ -61,7 +61,7 @@ namespace Diplom
 
         private void btm_change_Click(object sender, RoutedEventArgs e)
         {
-            Transfer.Change_student("Редактировать договор", student_selected);
+            Dialog_message.Menu_change_student(student_selected);
         }
     }
 }

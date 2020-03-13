@@ -36,5 +36,9 @@ namespace Diplom
         {
             DialogHost.Show(new Dialog_WARNING(text, close));
         }
+        public static void Menu_change_student(Student student_changed)
+        {
+            DialogHost.Show(new Menu_change_student(student_changed));
+        }
     }
 }
