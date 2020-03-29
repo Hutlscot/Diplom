@@ -10,8 +10,12 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="360" d:DesignWidth="300">
     <Grid>
+        <Button IsCancel="True" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignIconButton}" Margin="2" Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <materialDesign:PackIcon Foreground="{StaticResource ValidationErrorBrush}" Kind="Multiply" />
+        </Button>
         <StackPanel HorizontalAlignment="Center">
-            <TextBlock Text="Меню редактирования" HorizontalAlignment="Center" Margin="20"/>
+           
+            <TextBlock Text="Меню редактирования" HorizontalAlignment="Center" Margin="25"/>
             <Button
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="150" 

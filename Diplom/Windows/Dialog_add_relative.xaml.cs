@@ -23,8 +23,8 @@ namespace Diplom
     {
         DialogHost closeDialog;
         Student student;
-        ListView list;
-        public Dialog_add_relative(DialogHost closeDialog, Student student, ListView list)
+        DataGrid list;
+        public Dialog_add_relative(DialogHost closeDialog, Student student, DataGrid list)
         {
             InitializeComponent();
             txt_phone.PreviewTextInput += Val.Phone_PreviewTextInput;

@@ -18,7 +18,7 @@ namespace Diplom
         {
             DialogHost.Show(new DialogProgressBar(text));
         }
-        public static void MessageAddRelative(DialogHost CloseDialog, Student student, ListView list)
+        public static void MessageAddRelative(DialogHost CloseDialog, Student student, DataGrid list)
         {
             DialogHost.Show(new Dialog_add_relative(CloseDialog, student, list));
         }

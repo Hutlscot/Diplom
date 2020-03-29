@@ -111,6 +111,9 @@ namespace Diplom
                     case "Редактировать договор":
                         Manager_frame.frame.Navigate(new Change_contract(st));
                         break;
+                    case "Редактировать родственников":
+                        Manager_frame.frame.Navigate(new Change_relative(st));
+                        break;
                     case "Редактировать пользователя":
                         Manager_frame.frame.Navigate(new Change_user(user_change));
                         break;
