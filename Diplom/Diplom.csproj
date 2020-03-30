@@ -85,7 +85,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Change_relative.xaml.cs">
+    <Compile Include="Cryptographer.cs" />
+    <Compile Include="Pages\Change_relative.xaml.cs">
       <DependentUpon>Change_relative.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Menu_change_student.xaml.cs">
@@ -204,7 +205,7 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Page Include="Change_relative.xaml">
+    <Page Include="Pages\Change_relative.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -372,9 +373,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="VIewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

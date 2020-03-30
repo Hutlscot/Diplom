@@ -45,6 +45,7 @@ namespace Diplom
             InitializeComponent();
             DataContext = dbContext.Users.Find(Transfer.user.Id);
             dbContext.Users.Attach(DataContext as User);
+            (DataContext as User).Password = "";
             title.Text = Greeting();
         }
         private void btm_save_Click(object sender, RoutedEventArgs e)

@@ -35,9 +35,9 @@
                     materialDesign:TextFieldAssist.HasClearButton="True">
                 </TextBox>
                 <TextBox 
-                    MaxLength="25"
                     Name="txt_phone"
                     materialDesign:HintAssist.Hint="Телефон"
+                    MaxLength="17"
                     materialDesign:TextFieldAssist.HasClearButton="True">
                 </TextBox>
                 <TextBox 

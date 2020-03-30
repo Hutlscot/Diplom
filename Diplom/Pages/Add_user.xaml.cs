@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -42,7 +43,8 @@ namespace Diplom
                 User user = new User();
                 user.Id = person.Id;
                 user.Login = txt_login.Text;
-                user.Password = txt_password.Text;
+                string password = Cryptographer.Coding(txt_password.Text);
+                user.Password = password;
                 user.TypeUserId = cmb_type.SelectedIndex + 1;
                 dbContext.Users.Add(user);
                 dbContext.SaveChanges();

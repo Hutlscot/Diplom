@@ -21,13 +21,15 @@ namespace Diplom
     /// </summary>
     public partial class Authorization : Window
     {
-        static int GoOver = 0;
+        int errors = 0;
+        int block = 0;
+        int time = 10;
         static DispatcherTimer timer = new DispatcherTimer();
         public Authorization()
         {
             InitializeComponent();
             timer.Tick += new EventHandler(TimerStart);
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 500);
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
         }
       
         private void btm_input_Click(object sender, RoutedEventArgs e)
@@ -39,8 +41,9 @@ namespace Diplom
             }
             using (ConnectionEntity dbContext = new ConnectionEntity())
             {
-                User user = dbContext.Users.Where(x => x.Login == txt_login.Text && x.Password == txt_password.Password).FirstOrDefault() as User;
-                if (user!=null)
+                string password = Cryptographer.Coding(txt_password.Password);
+                User user = dbContext.Users.Where(x => x.Login == txt_login.Text && x.Password == password).FirstOrDefault() as User;
+                if (user != null)
                 {
                     TimerStop();
                     MainWindow main = new MainWindow(user);
@@ -50,23 +53,34 @@ namespace Diplom
                 else
                 {
                     TimerStop();
+                    errors++;
                     Dialog_message.MessageER("Неверный логин или пароль");
+                    if (errors >= 3)
+                    {
+                        btm_input.IsEnabled = false;
+                        txt_message.Visibility = Visibility.Visible;
+                        timer.Start();
+                    }
                 }
             }
 
         }
         private void TimerStart(object sender, EventArgs e)
         {
-            GoOver++;
-            if(GoOver==1)
+            block++;
+            txt_message.Text = "Подождите " + (time - block).ToString() + "\nдо следующей попытки входа";
+            if (block == time)
             {
-                
+                btm_input.IsEnabled = true;
+                txt_message.Visibility = Visibility.Hidden;
+                block = 0;
+                time *= 2;
+                TimerStop();
             }
         }
         private void TimerStop()
         {
             timer.Stop();
-            GoOver = 0;
         }
     }
 }

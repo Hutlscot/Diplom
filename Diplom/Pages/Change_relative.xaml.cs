@@ -20,14 +20,14 @@ namespace Diplom
     /// </summary>
     public partial class Change_relative : Page
     {
-        //ConnectionEntity dbContext = new ConnectionEntity();
+        ConnectionEntity dbContext = new ConnectionEntity();
         Student student_changed;
         Relative relative = new Relative();
         public Change_relative(Student student)
         {
             InitializeComponent();
             student_changed = student;
-            list.ItemsSource = student.Relatives.ToList();
+            list.ItemsSource = dbContext.Relatives.Where(x => x.StudentId == student.Id).ToList();
         }
 
         private void list_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -37,7 +37,10 @@ namespace Diplom
 
         private void btm_delete_Click(object sender, RoutedEventArgs e)
         {
-            
+            dbContext.Relatives.Remove(dbContext.Relatives.Find(relative.Id));
+            dbContext.SaveChanges();
+            list.ItemsSource = dbContext.Relatives.Where(x => x.StudentId == student_changed.Id).ToList();
+            Dialog_message.MessageOK("Успешно");
         }
 
         private void btm_open_window_add_Click(object sender, RoutedEventArgs e)

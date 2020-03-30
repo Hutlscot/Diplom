@@ -45,11 +45,20 @@ namespace Diplom
         private void btm_OK_Click(object sender, RoutedEventArgs e)
         {
             int rep = student_selected.Representatives.FirstOrDefault().Person.Id;
-            int rel = student_selected.Relatives.FirstOrDefault().Person.Id;
+            bool x = false;
+            int rel = 0;
+            if (student_selected.Relatives.FirstOrDefault() != null)
+            {
+                rel = student_selected.Relatives.FirstOrDefault().Person.Id;
+                x = true;
+            }
             int stud = student_selected.Person.Id;
             dbContext.Students.Remove(student_selected);
             dbContext.People.Remove(dbContext.People.Find(rep));
-            dbContext.People.Remove(dbContext.People.Find(rel));
+            if (x)
+            {
+                dbContext.People.Remove(dbContext.People.Find(rel));
+            }
             dbContext.People.Remove(dbContext.People.Find(stud));
             dbContext.SaveChanges();
             list.ItemsSource = Search.Find_Student(txt_fio.Text, Date_End);

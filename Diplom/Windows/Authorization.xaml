@@ -46,6 +46,9 @@
 
 
             </StackPanel>
+            <TextBlock TextWrapping="Wrap" Name="txt_message" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="50" TextAlignment="Center">
+                Подождите:
+            </TextBlock>
         </Grid>
     </materialDesign:DialogHost>
 </Window>

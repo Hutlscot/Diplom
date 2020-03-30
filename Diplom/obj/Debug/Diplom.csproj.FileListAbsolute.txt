@@ -138,7 +138,7 @@ C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\P
 C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\Pages\Change_representative.baml
 C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\Pages\Change_contract.g.cs
 C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\Pages\Change_contract.baml
-C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\Change_relative.g.cs
 C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\Windows\Menu_change_student.g.cs
-C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\Change_relative.baml
 C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\Windows\Menu_change_student.baml
+C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\Pages\Change_relative.g.cs
+C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\Pages\Change_relative.baml
