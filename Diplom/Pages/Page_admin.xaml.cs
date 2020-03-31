@@ -55,6 +55,8 @@ namespace Diplom
                 Dialog_message.MessageER("Некорректные\nданные");
                 return;
             }
+            string password = Cryptographer.Coding(txt_password.Text);
+            (DataContext as User).Password = password;
             dbContext.SaveChanges();
             Dialog_message.MessageOK("Сохранено");
             Transfer.Trans("Данные администратора");
