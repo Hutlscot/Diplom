@@ -85,7 +85,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Cryptographer.cs" />
+    <Compile Include="Classes\Cryptographer.cs" />
+    <Compile Include="Dialog_delete_student.xaml.cs">
+      <DependentUpon>Dialog_delete_student.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Change_relative.xaml.cs">
       <DependentUpon>Change_relative.xaml</DependentUpon>
     </Compile>
@@ -205,6 +208,10 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Dialog_delete_student.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Change_relative.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

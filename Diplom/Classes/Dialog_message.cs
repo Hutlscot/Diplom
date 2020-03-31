@@ -40,5 +40,9 @@ namespace Diplom
         {
             DialogHost.Show(new Menu_change_student(student_changed));
         }
+        public static void Dialog_delete_Student(Student student, DataGrid list, string fio, DatePicker dateEnd)
+        {
+            DialogHost.Show(new Dialog_delete_student(student, list, fio, dateEnd));
+        }
     }
 }

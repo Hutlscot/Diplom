@@ -30,8 +30,7 @@ namespace Diplom
         //запрос на подтверждение
         private void btm_delete_Click(object sender, RoutedEventArgs e)
         {
-            text_message.Text = "Удалить\n"+student_selected.Person.FIO+" ?";
-            Warning.IsOpen = true;
+            Dialog_message.Dialog_delete_Student(student_selected, list, txt_fio.Text, Date_End);
         }//поиск
         private void txt_fio_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -42,27 +41,7 @@ namespace Diplom
             list.ItemsSource = Search.Find_Student(txt_fio.Text, Date_End);
         }
         //метод удаления
-        private void btm_OK_Click(object sender, RoutedEventArgs e)
-        {
-            int rep = student_selected.Representatives.FirstOrDefault().Person.Id;
-            bool x = false;
-            int rel = 0;
-            if (student_selected.Relatives.FirstOrDefault() != null)
-            {
-                rel = student_selected.Relatives.FirstOrDefault().Person.Id;
-                x = true;
-            }
-            int stud = student_selected.Person.Id;
-            dbContext.Students.Remove(student_selected);
-            dbContext.People.Remove(dbContext.People.Find(rep));
-            if (x)
-            {
-                dbContext.People.Remove(dbContext.People.Find(rel));
-            }
-            dbContext.People.Remove(dbContext.People.Find(stud));
-            dbContext.SaveChanges();
-            list.ItemsSource = Search.Find_Student(txt_fio.Text, Date_End);
-        }
+       
         private void list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             student_selected = list.SelectedItem as Student;

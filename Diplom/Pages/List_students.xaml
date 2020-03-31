@@ -11,30 +11,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       Title="Список студентов">
 
-    <materialDesign:DialogHost Name="Warning">
-        <materialDesign:DialogHost.DialogContent>
-            <Grid Background="{StaticResource PrimaryHueDarkBrush}">
-                <StackPanel>
-                    <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignIconButton}" Margin="5" Width="30" Height="30" HorizontalAlignment="Right">
-                        <materialDesign:PackIcon Foreground="{StaticResource ValidationErrorBrush}" Kind="Multiply" />
-                    </Button>
-                    <materialDesign:PackIcon Kind="WarningCircle" HorizontalAlignment="Center" Foreground="Yellow" Width="60" Height="60" Margin="0 -5 0 20"/>
-                    <Grid  Background="White" Width="200" Height="90">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="5*"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" Name="text_message" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{StaticResource MaterialDesignSubtitle1TextBlock}">Удалить?</TextBlock>
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="1">
-                            <Button Name="btm_OK" Click="btm_OK_Click" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Margin="0 0 10 0" Background="{StaticResource ValidationErrorBrush}" Style="{StaticResource MaterialDesignFlatButton}">
-                                <TextBlock Foreground="Black">ДА</TextBlock>
-                            </Button>
-                            <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Margin="10 0 0 0" Style="{StaticResource MaterialDesignFlatButton}">НЕТ</Button>
-                        </StackPanel>
-                    </Grid>
-                </StackPanel>
-            </Grid>
-        </materialDesign:DialogHost.DialogContent>
+    <materialDesign:DialogHost>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
