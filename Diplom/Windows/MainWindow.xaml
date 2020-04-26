@@ -20,7 +20,6 @@
         </Grid.ColumnDefinitions>
         <TextBlock Panel.ZIndex="999" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="{Binding ElementName=frame, Path=Content.Title}"/>
         <Frame Name="frame" NavigationUIVisibility="Hidden" Grid.Column="1" Grid.Row="1"></Frame>
-        <!--<Border BorderBrush="Wheat" BorderThickness="0 0 0 2" >-->
         <materialDesign:ColorZone Mode="PrimaryMid" Grid.ColumnSpan="2" Height="51">
             <Grid>
                 <materialDesign:PopupBox Name="btm_back" PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right">
@@ -32,7 +31,6 @@
                 </materialDesign:PopupBox>
             </Grid>
         </materialDesign:ColorZone>
-        <!--</Border>-->
         <Grid>
             <Image Width="46" HorizontalAlignment="Left" Source="/Diplom;component/Resources/logo.png"></Image>
             <TextBlock FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center">
@@ -40,21 +38,8 @@
             </TextBlock>
         </Grid>
         <Grid HorizontalAlignment="Stretch" Grid.Row="1" Background="{StaticResource PrimaryHueMidBrush}">
-            <!--<Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-                       
-            <Grid Grid.Row="0" Background="{StaticResource Back}">
-                
-            </Grid>-->
             <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
-                <!--<Border BorderThickness="0 1 0 0" BorderBrush="Wheat">-->
                 <StackPanel x:Name="Menu" Margin="10"/>
-                <!--</Border>-->
             </ScrollViewer>
         </Grid>
     </Grid>

@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
 namespace Diplom
 {
     /// <summary>
@@ -27,7 +15,6 @@ namespace Diplom
             InitializeComponent();
             list.ItemsSource = dbContext.Rooms.ToList();
         }
-
         private void btm_delete_Click(object sender, RoutedEventArgs e)
         {
             text_message.Text = "Удалить\nкомнату № " + room_selected.Number + " ?";
@@ -37,7 +24,6 @@ namespace Diplom
         {
             room_selected = list.SelectedItem as Room;
         }
-
         private void btm_OK_Click(object sender, RoutedEventArgs e)
         {
             dbContext.Rooms.Remove(room_selected);

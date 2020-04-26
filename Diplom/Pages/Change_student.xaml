@@ -10,7 +10,6 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Редактирование студента">
-
     <Grid>
         <materialDesign:DialogHost>
             <Grid>
@@ -61,8 +60,7 @@
                     materialDesign:TextFieldAssist.HasClearButton="True">
                         </TextBox>
                         <Button Tag="98" Margin="25"
-                                Name="btm_load_photo"
-                                
+                                Name="btm_load_photo"   
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="150"
                 ToolTip="Загрузить файл в формате .jpg или .png"

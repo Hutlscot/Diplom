@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
 namespace Diplom
 {
     /// <summary>
@@ -29,12 +17,10 @@ namespace Diplom
             student_changed = student;
             list.ItemsSource = dbContext.Relatives.Where(x => x.StudentId == student.Id).ToList();
         }
-
         private void list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             relative = list.SelectedItem as Relative;
         }
-
         private void btm_delete_Click(object sender, RoutedEventArgs e)
         {
             dbContext.Relatives.Remove(dbContext.Relatives.Find(relative.Id));
@@ -42,10 +28,15 @@ namespace Diplom
             list.ItemsSource = dbContext.Relatives.Where(x => x.StudentId == student_changed.Id).ToList();
             Dialog_message.MessageOK("Успешно");
         }
-
         private void btm_open_window_add_Click(object sender, RoutedEventArgs e)
         {
             Dialog_message.MessageAddRelative(CloseDialog, student_changed, list);
+        }
+
+        private void btm_next_Click(object sender, RoutedEventArgs e)
+        {
+            Dialog_message.MessageOK("Сохранено");
+            Manager_frame.frame.GoBack();
         }
     }
 }

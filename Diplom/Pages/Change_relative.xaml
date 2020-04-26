@@ -10,12 +10,10 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Редактирование списка родственников">
-
     <Grid>
         <materialDesign:DialogHost Name="CloseDialog"
              HorizontalAlignment="Center"
              VerticalAlignment="Center">
-
             <!--Окно с родственниками-->
             <Border
                  BorderThickness="1"
@@ -32,7 +30,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Список родственников-->
-                   <DataGrid
+                    <DataGrid
             Name="list"
             SelectionMode="Single"
                   IsReadOnly="True"
@@ -40,28 +38,26 @@
             CanUserAddRows="False"
             AutoGenerateColumns="False" SelectionChanged="list_SelectionChanged">
                         <DataGrid.Columns>
-                            
+
                             <materialDesign:DataGridTextColumn
                     Binding="{Binding Person.FIO}"
                     Header="ФИО">
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="{x:Type TextBlock}">
-                                            <Setter Property="VerticalAlignment" Value="Center"/>
-                                            <Setter Property="Margin" Value="3"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </materialDesign:DataGridTextColumn>
-
-                                <materialDesign:DataGridTextColumn
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </materialDesign:DataGridTextColumn>
+                            <materialDesign:DataGridTextColumn
                     Binding="{Binding Person.Phone}"
                     Header="Телефона">
-                                    <DataGridTextColumn.ElementStyle>
-                                        <Style TargetType="{x:Type TextBlock}">
-                                            <Setter Property="VerticalAlignment" Value="Center"/>
-                                        </Style>
-                                    </DataGridTextColumn.ElementStyle>
-                                </materialDesign:DataGridTextColumn>
-
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </materialDesign:DataGridTextColumn>
                             <materialDesign:DataGridTextColumn
                     Binding="{Binding Address}"
                     Header="Адрес">
@@ -73,25 +69,20 @@
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
                             </materialDesign:DataGridTextColumn>
-                            
                             <DataGridTemplateColumn Header="Редактировать">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Margin="0 0 10 0" Orientation="Horizontal" HorizontalAlignment="Center">
-                                                <!--<Button ToolTip="Нажмите для редактирования" Name="btm_change" Click="btm_change_Click" Foreground="White" Style="{StaticResource MaterialDesignIconButton}">
-                                                    <materialDesign:PackIcon Kind="ModeEdit"  Height="20" Width="20"></materialDesign:PackIcon>
-                                                </Button>-->
-                                                <Button ToolTip="Нажмите для удаления" Name="btm_delete" Click="btm_delete_Click" Foreground="{StaticResource ValidationErrorBrush}" Style="{StaticResource MaterialDesignIconButton}">
-                                                    <materialDesign:PackIcon Margin="5 0 0 0" Kind="DeleteAlert"  Height="20" Width="20"></materialDesign:PackIcon>
-                                                </Button>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
-
-                        <materialDesign:ColorZone
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0 0 10 0" Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button ToolTip="Нажмите для удаления" Name="btm_delete" Click="btm_delete_Click" Foreground="{StaticResource ValidationErrorBrush}" Style="{StaticResource MaterialDesignIconButton}">
+                                                <materialDesign:PackIcon Margin="5 0 0 0" Kind="DeleteAlert"  Height="20" Width="20"></materialDesign:PackIcon>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <materialDesign:ColorZone
                          Mode="PrimaryMid"
                      Grid.Row="1"
                              Effect="{DynamicResource MaterialDesignShadowDepth5}">
@@ -107,9 +98,7 @@
                            HorizontalAlignment="Right"  
                         ToolTip="Нажмите для сохранения"
                              Name="btm_next"
-                             
-                             Margin="0 0 15 0"
-                            >
+                             Margin="0 0 15 0" Click="btm_next_Click">
                                 <materialDesign:PackIcon
                                     Margin="1 0 0 0 "
                           Kind="ContentSave"
@@ -118,7 +107,6 @@
                             </Button>
                         </Grid>
                     </materialDesign:ColorZone>
-
                     <!--Кнопка открытия окна-->
                     <Button 
                       Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"

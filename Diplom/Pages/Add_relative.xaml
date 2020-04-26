@@ -14,7 +14,6 @@
         <materialDesign:DialogHost Name="CloseDialog"
              HorizontalAlignment="Center"
              VerticalAlignment="Center">
-            
             <!--Окно с родственниками-->
             <Border
                  BorderThickness="1"
@@ -29,7 +28,6 @@
                         <RowDefinition
                           Height="Auto" />
                     </Grid.RowDefinitions>
-
                     <!--Список родственников-->
                     <DataGrid
             Name="list"
@@ -39,7 +37,6 @@
             CanUserAddRows="False"
             AutoGenerateColumns="False">
                         <DataGrid.Columns>
-
                             <materialDesign:DataGridTextColumn
                     Binding="{Binding Person.FIO}"
                     Header="ФИО">
@@ -50,7 +47,6 @@
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
                             </materialDesign:DataGridTextColumn>
-
                             <materialDesign:DataGridTextColumn
                     Binding="{Binding Person.Phone}"
                     Header="Телефона">
@@ -60,7 +56,6 @@
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
                             </materialDesign:DataGridTextColumn>
-
                             <materialDesign:DataGridTextColumn
                     Binding="{Binding Address}"
                     Header="Адрес">
@@ -74,8 +69,6 @@
                             </materialDesign:DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-
-
                     <materialDesign:ColorZone
                          Mode="PrimaryMid"
                      Grid.Row="1"
@@ -100,20 +93,8 @@
                           Height="22"
                           Width="22" />
                             </Button>
-                            <!--<Button
-                      Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
-                         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"  
-                        ToolTip="Щелкните для добавления"
-                             Margin="0 0 70 0"
-                            HorizontalAlignment="Right">
-                                <materialDesign:PackIcon
-                          Kind="Plus"
-                          Height="22"
-                          Width="22" />
-                            </Button>-->
                         </Grid>
                     </materialDesign:ColorZone>
-
                     <!--Кнопка открытия окна-->
                     <Button 
                       Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"

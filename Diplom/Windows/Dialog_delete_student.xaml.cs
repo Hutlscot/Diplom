@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace Diplom
 {
@@ -36,7 +26,13 @@ namespace Diplom
         }
         private void btm_OK_Click(object sender, RoutedEventArgs e)
         {
-            int rep = student.Representatives.FirstOrDefault().Person.Id;
+            bool y = false;
+            int rep = 0;
+            if (student.Representatives.FirstOrDefault() != null)
+            {
+                rep = student.Representatives.FirstOrDefault().Person.Id;
+                y = true;
+            }
             bool x = false;
             int rel = 0;
             if (student.Relatives.FirstOrDefault() != null)
@@ -46,7 +42,10 @@ namespace Diplom
             }
             int stud = student.Person.Id;
             dbContext.Students.Remove(student);
-            dbContext.People.Remove(dbContext.People.Find(rep));
+            if(y)
+            {
+                dbContext.People.Remove(dbContext.People.Find(rep));
+            }
             if (x)
             {
                 dbContext.People.Remove(dbContext.People.Find(rel));

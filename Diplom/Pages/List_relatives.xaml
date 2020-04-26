@@ -10,8 +10,6 @@
       FontSize="16"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Список родственников">
-
-
     <materialDesign:DialogHost>
         <Grid>
             <Grid.RowDefinitions>
@@ -44,7 +42,6 @@
             CanUserAddRows="False"
             AutoGenerateColumns="False" >
                 <DataGrid.Columns>
-
                     <materialDesign:DataGridTextColumn
                     Binding="{Binding Person.Id}"
                     Header="№">
@@ -55,7 +52,6 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
-
                     <materialDesign:DataGridTextColumn
                     Binding="{Binding Person.FIO}"
                     Header="ФИО студента">
@@ -66,7 +62,6 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
-
                     <DataGridTemplateColumn Header="Родственники студента">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Linq;
 namespace Diplom
 {
     partial class Student
@@ -37,6 +32,10 @@ namespace Diplom
         {
             get
             {
+                if(Representatives.FirstOrDefault()==null)
+                {
+                    return "";
+                }
                 Representative rep = Representatives.FirstOrDefault();
                 return rep.Person.Name+" "+rep.Person.MiddleName+"\n"+rep.Person.Phone;
             }

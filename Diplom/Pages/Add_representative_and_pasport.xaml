@@ -115,7 +115,6 @@
                     materialDesign:TextFieldAssist.HasClearButton="True">
                         </TextBox>
                         <DatePicker
-                     
                     Name="Date_of_issue"
                     materialDesign:HintAssist.Hint="Дата выдачи">
                         </DatePicker>

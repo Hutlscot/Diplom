@@ -50,7 +50,6 @@
                     materialDesign:HintAssist.Hint="Логин"
                     materialDesign:TextFieldAssist.HasClearButton="True">
                 </TextBox>
-
                 <TextBox
                     MaxLength="25"
                     Text="{Binding Path=Password}"   
@@ -78,7 +77,7 @@
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="150"
                 ToolTip="Нажмите для создания">
-                    <TextBlock Text="Создать" Margin="0,0,0,3"/>
+                    <TextBlock Text="Сохранить" Margin="0,0,0,3"/>
                 </Button>
             </StackPanel>
         </GroupBox>

@@ -43,7 +43,6 @@
             CanUserAddRows="False"
             AutoGenerateColumns="False">
                 <DataGrid.Columns>
-
                     <materialDesign:DataGridTextColumn
                     Binding="{Binding Number}"
                     Header="№ Комнаты">
@@ -54,7 +53,6 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
-
                     <materialDesign:DataGridTextColumn
                     Binding="{Binding NumberOfPlace}"
                     Header="Кол-во мест">
@@ -65,7 +63,6 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
-
                     <materialDesign:DataGridTextColumn
                     Binding="{Binding Free_place}"
                     Header="Свободных мест">
@@ -76,7 +73,6 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
-
                     <materialDesign:DataGridTextColumn
                     Binding="{Binding Area}"
                     Header="Площадь">
@@ -86,7 +82,6 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
-
                     <materialDesign:DataGridTextColumn
                     Binding="{Binding Room_number}"
                     Header="№ Тех. паспорта">
@@ -98,7 +93,6 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
-
                     <DataGridTemplateColumn Header="Редактировать">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

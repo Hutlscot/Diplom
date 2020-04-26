@@ -10,7 +10,6 @@
       d:DesignHeight="450" d:DesignWidth="800"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       Title="Список договоров">
-
     <materialDesign:DialogHost Name="Warning">
         <materialDesign:DialogHost.DialogContent>
             <Grid Background="{StaticResource PrimaryHueDarkBrush}">
@@ -44,16 +43,14 @@
                 <StackPanel  Orientation="Horizontal">
                     <TextBlock Foreground="White" Text="Найти:" Margin="15" Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
                     <TextBox Margin="10" Foreground="Wheat"
-                    MaxLength="30"
-                   
+                    MaxLength="30" 
                     TextWrapping="Wrap"
                     Name="txt_fio"
                     materialDesign:HintAssist.Hint="Введите фамилию студента"
                     materialDesign:TextFieldAssist.HasClearButton="True" >
                     </TextBox>
                     <DatePicker Margin="10"
-                    Name="Date_End"
-                                
+                    Name="Date_End"        
                     materialDesign:HintAssist.Hint="Дата заселения с  " />
                 </StackPanel>
             </Grid>
@@ -65,7 +62,6 @@
             CanUserAddRows="False"
             AutoGenerateColumns="False" SelectionChanged="list_SelectionChanged">
                 <DataGrid.Columns>
-
                     <materialDesign:DataGridTextColumn
                     Binding="{Binding Id}"
                     Header="№">
@@ -76,7 +72,6 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
-
                     <materialDesign:DataGridTextColumn
                     Binding="{Binding Student.Person.FIO}"
                     Header="ФИО">
@@ -87,17 +82,6 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
-
-                    <!--<materialDesign:DataGridTextColumn
-                    Binding="{Binding Student.Person.Phone}"
-                    Header="№ Телефона">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="{x:Type TextBlock}">
-                                <Setter Property="VerticalAlignment" Value="Center"/>
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </materialDesign:DataGridTextColumn>-->
-
                     <materialDesign:DataGridTextColumn
                     Binding="{Binding Room.Number}"
                     Header="№ Комнаты">
@@ -109,7 +93,6 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
-
                     <materialDesign:DataGridTextColumn
                     Binding="{Binding DateStart, StringFormat={}{0:dd.MM.yy}}"
                     Header="Дата заселения">
@@ -120,7 +103,6 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
-
                     <materialDesign:DataGridTextColumn
                     Binding="{Binding DateEnd, StringFormat={}{0:dd.MM.yy}}"
                     Header="Дата выселения">
@@ -131,7 +113,6 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
-
                     <DataGridTemplateColumn Header="Доступные действия">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
