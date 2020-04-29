@@ -42,7 +42,7 @@ namespace Diplom
         public static void Trans(string name)
         {
             name_page = name;
-            if (name == "Список студентов"|| name == "Список родственников" || name == "Список комнат")
+            if (name == "Список студентов"|| name == "Список родственников" || name == "Список комнат"||name=="Управление документацией")
             {
                 Dialog_message.MessageProgress("Загрузка");
                 timer.Interval = new TimeSpan(0, 0, 0, 0, 1000);

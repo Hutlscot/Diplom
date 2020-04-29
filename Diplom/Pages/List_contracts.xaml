@@ -46,12 +46,15 @@
                     MaxLength="30" 
                     TextWrapping="Wrap"
                     Name="txt_fio"
+                             TextChanged="txt_fio_TextChanged"
                     materialDesign:HintAssist.Hint="Введите фамилию студента"
                     materialDesign:TextFieldAssist.HasClearButton="True" >
                     </TextBox>
                     <DatePicker Margin="10"
-                    Name="Date_End"        
+                    Name="Date_End" 
+                     SelectedDateChanged="Date_End_SelectedDateChanged"
                     materialDesign:HintAssist.Hint="Дата заселения с  " />
+                    <Button Name="btm_test" Click="btm_test_Click">out</Button>
                 </StackPanel>
             </Grid>
             <DataGrid Grid.Row="1"
@@ -63,7 +66,7 @@
             AutoGenerateColumns="False" SelectionChanged="list_SelectionChanged">
                 <DataGrid.Columns>
                     <materialDesign:DataGridTextColumn
-                    Binding="{Binding Id}"
+                    Binding="{Binding Contract.Id}"
                     Header="№">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="{x:Type TextBlock}">
@@ -73,7 +76,7 @@
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
                     <materialDesign:DataGridTextColumn
-                    Binding="{Binding Student.Person.FIO}"
+                    Binding="{Binding Person.FIO}"
                     Header="ФИО">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="{x:Type TextBlock}">
@@ -83,7 +86,7 @@
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
                     <materialDesign:DataGridTextColumn
-                    Binding="{Binding Room.Number}"
+                    Binding="{Binding Contract.Room.Number}"
                     Header="№ Комнаты">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="{x:Type TextBlock}">
@@ -94,7 +97,7 @@
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
                     <materialDesign:DataGridTextColumn
-                    Binding="{Binding DateStart, StringFormat={}{0:dd.MM.yy}}"
+                    Binding="{Binding Contract.DateStart, StringFormat={}{0:dd.MM.yy}}"
                     Header="Дата заселения">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="{x:Type TextBlock}">
@@ -104,7 +107,7 @@
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
                     <materialDesign:DataGridTextColumn
-                    Binding="{Binding DateEnd, StringFormat={}{0:dd.MM.yy}}"
+                    Binding="{Binding Contract.DateEnd, StringFormat={}{0:dd.MM.yy}}"
                     Header="Дата выселения">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="{x:Type TextBlock}">
