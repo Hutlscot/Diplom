@@ -87,6 +87,7 @@
     </ApplicationDefinition>
     <Compile Include="Classes\Cryptographer.cs" />
     <Compile Include="Classes\OutputOfDocumentation.cs" />
+    <Compile Include="Partial_Contract.cs" />
     <Compile Include="Windows\Dialog_delete_student.xaml.cs">
       <DependentUpon>Dialog_delete_student.xaml</DependentUpon>
     </Compile>

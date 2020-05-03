@@ -1,5 +1,6 @@
 ﻿using Diplom.Pages;
 using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,7 +20,6 @@ namespace Diplom
             Transfer.user = user;
             if (user.TypeUser.Name == "Юзер")
             {
-
                 var menuRegister = new List<SubItem>();
                 menuRegister.Add(new SubItem("Добавить студента"));
                 menuRegister.Add(new SubItem("Список студентов"));

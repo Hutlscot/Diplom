@@ -54,7 +54,6 @@
                     Name="Date_End" 
                      SelectedDateChanged="Date_End_SelectedDateChanged"
                     materialDesign:HintAssist.Hint="Дата заселения с  " />
-                    <Button Name="btm_test" Click="btm_test_Click">out</Button>
                 </StackPanel>
             </Grid>
             <DataGrid Grid.Row="1"
@@ -66,7 +65,7 @@
             AutoGenerateColumns="False" SelectionChanged="list_SelectionChanged">
                 <DataGrid.Columns>
                     <materialDesign:DataGridTextColumn
-                    Binding="{Binding Contract.Id}"
+                    Binding="{Binding Id}"
                     Header="№">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="{x:Type TextBlock}">
@@ -76,7 +75,7 @@
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
                     <materialDesign:DataGridTextColumn
-                    Binding="{Binding Person.FIO}"
+                    Binding="{Binding Student.Person.FIO}"
                     Header="ФИО">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="{x:Type TextBlock}">
@@ -86,7 +85,7 @@
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
                     <materialDesign:DataGridTextColumn
-                    Binding="{Binding Contract.Room.Number}"
+                    Binding="{Binding Room.Number}"
                     Header="№ Комнаты">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="{x:Type TextBlock}">
@@ -97,7 +96,7 @@
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
                     <materialDesign:DataGridTextColumn
-                    Binding="{Binding Contract.DateStart, StringFormat={}{0:dd.MM.yy}}"
+                    Binding="{Binding DateStart, StringFormat={}{0:dd.MM.yy}}"
                     Header="Дата заселения">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="{x:Type TextBlock}">
@@ -107,7 +106,7 @@
                         </DataGridTextColumn.ElementStyle>
                     </materialDesign:DataGridTextColumn>
                     <materialDesign:DataGridTextColumn
-                    Binding="{Binding Contract.DateEnd, StringFormat={}{0:dd.MM.yy}}"
+                    Binding="{Binding DateEnd, StringFormat={}{0:dd.MM.yy}}"
                     Header="Дата выселения">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="{x:Type TextBlock}">
