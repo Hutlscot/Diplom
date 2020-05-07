@@ -42,15 +42,13 @@ namespace Diplom
             dbContext.SaveChanges();
             list.ItemsSource = dbContext.Contracts.ToList();
         }
-
         private void txt_fio_TextChanged(object sender, TextChangedEventArgs e)
         {
-            list.ItemsSource = Search.Find_Student(txt_fio.Text, Date_End);
+            list.ItemsSource = Search.Find_Contract(txt_fio.Text, Date_End);
         }
-
         private void Date_End_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            list.ItemsSource = Search.Find_Student(txt_fio.Text, Date_End);
+            list.ItemsSource = Search.Find_Contract(txt_fio.Text, Date_End);
         }
     }
 }
