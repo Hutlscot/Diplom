@@ -87,7 +87,7 @@
     </ApplicationDefinition>
     <Compile Include="Classes\Cryptographer.cs" />
     <Compile Include="Classes\OutputOfDocumentation.cs" />
-    <Compile Include="Partial_Contract.cs" />
+    <Compile Include="Classes\Partial_Contract.cs" />
     <Compile Include="Windows\Dialog_delete_student.xaml.cs">
       <DependentUpon>Dialog_delete_student.xaml</DependentUpon>
     </Compile>
@@ -388,6 +388,15 @@
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
       <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
