@@ -145,3 +145,9 @@ C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\P
 C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\Windows\Dialog_delete_student.g.cs
 C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\Windows\Dialog_delete_student.baml
 C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\Diplom.csproj.ResolveComReference.cache
+C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\Change_db.g.cs
+C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\obj\Debug\Change_db.baml
+C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\bin\Debug\System.Security.AccessControl.dll
+C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\bin\Debug\System.Security.Permissions.dll
+C:\Users\locadm\Desktop\FINISH (диплом)\Diplom - origin\Diplom\bin\Debug\System.Security.Principal.Windows.dll

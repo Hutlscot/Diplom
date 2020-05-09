@@ -41,6 +41,10 @@
             "EntityFramework": {
               "target": "Package",
               "version": "[6.2.0, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[4.7.0, )"
             }
           }
         }

@@ -111,6 +111,9 @@ namespace Diplom
                     case "Редактировать пользователя":
                         Manager_frame.frame.Navigate(new Change_user(user_change));
                         break;
+                    case "Управление базой данных":
+                        Manager_frame.frame.Navigate(new Change_db());
+                        break;
                 }
             }
             TimerStop(timer);
