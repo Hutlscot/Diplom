@@ -85,12 +85,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Change_db.xaml.cs">
-      <DependentUpon>Change_db.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Classes\Cryptographer.cs" />
     <Compile Include="Classes\OutputOfDocumentation.cs" />
     <Compile Include="Classes\Partial_Contract.cs" />
+    <Compile Include="Windows\Dialog_change_connectionString.xaml.cs">
+      <DependentUpon>Dialog_change_connectionString.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Dialog_delete_student.xaml.cs">
       <DependentUpon>Dialog_delete_student.xaml</DependentUpon>
     </Compile>
@@ -213,7 +213,7 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Page Include="Change_db.xaml">
+    <Page Include="Windows\Dialog_change_connectionString.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

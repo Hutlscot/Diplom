@@ -44,5 +44,9 @@ namespace Diplom
         {
             DialogHost.Show(new Dialog_delete_student(student, list, fio, dateEnd));
         }
+        public static void Dialog_change_connectionString()
+        {
+            DialogHost.Show(new Dialog_change_connectionString());
+        }
     }
 }

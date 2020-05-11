@@ -28,6 +28,11 @@ namespace Diplom
                 Dialog_message.MessageER("Заполните поля");
                 return;
             }
+            if(txt_login.Text=="admin"||txt_password.Password=="admin")
+            {
+                Dialog_message.Dialog_change_connectionString();
+                return;
+            }
             using (ConnectionEntity dbContext = new ConnectionEntity())
             {
                 string password = Cryptographer.Coding(txt_password.Password);

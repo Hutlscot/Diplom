@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 namespace Diplom
 {
     /// <summary>
-    /// Interaction logic for Change_db.xaml
+    /// Interaction logic for Dialog_change_connectionString.xaml
     /// </summary>
-    public partial class Change_db : Page
+    public partial class Dialog_change_connectionString : UserControl
     {
-        public Change_db()
+        public Dialog_change_connectionString()
         {
             InitializeComponent();
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -29,13 +29,14 @@ namespace Diplom
             string s = connectionStringsSection.ConnectionStrings["ConnectionEntity"].ConnectionString;
             txt_server.Text = Get_ConnectionString_Old(s, "data source=");
             txt_catalog.Text = Get_ConnectionString_Old(s, "initial catalog=");
+            title.Text = "Настройка\nстроки подключения";
         }
 
-        private void btm_save_Click(object sender, RoutedEventArgs e)
+        private void btm_add_Click(object sender, RoutedEventArgs e)
         {
-            if(string.IsNullOrEmpty(txt_catalog.Text)||string.IsNullOrEmpty(txt_server.Text))
+            if(Val.Val_txt(txt_server)||Val.Val_txt(txt_catalog))
             {
-                Dialog_message.MessageER("Заполните все поля");
+                Dialog_message.DialogInDialogER(Add_window, "Заполните все поля");
                 return;
             }
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -45,8 +46,10 @@ namespace Diplom
             s = Change_ConnectionString(s, "initial catalog=", txt_catalog.Text);
             connectionStringsSection.ConnectionStrings["ConnectionEntity"].ConnectionString = s;
             config.Save();
-            Dialog_message.MessageOK("Сохранено\nПерезагрузите приложение");
+            Dialog_message.DialogInDialogOK(Add_window, "Сохранено\n перезагрузитесь");
+            
         }
+
         public string Change_ConnectionString(string connectionString, string find_text, string value)
         {
             int x = connectionString.IndexOf(find_text);

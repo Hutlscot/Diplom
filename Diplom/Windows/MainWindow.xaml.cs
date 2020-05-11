@@ -49,10 +49,8 @@ namespace Diplom
                 var item6 = new ItemMenu("Управление аккаунтами", menuRegister, PackIconKind.Register);
 
                 var item1 = new ItemMenu("Данные администратора", new UserControl(), PackIconKind.FileUser);
-                var item2 = new ItemMenu("Управление базой данных", new UserControl(), PackIconKind.Database);
                 Menu.Children.Add(new UserControlMenuItem(item6));
                 Menu.Children.Add(new UserControlMenuItem(item1));
-                Menu.Children.Add(new UserControlMenuItem(item2));
                 Manager_frame.frame.Navigate(new List_users());
             }
         }
